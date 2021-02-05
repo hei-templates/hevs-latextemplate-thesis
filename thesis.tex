@@ -1,0 +1,149 @@
+%    Copyright 2021 Silvan Zahno, HEI-Vs
+%
+% Licensed under the Apache License, Version 2.0 (the "License");
+% you may not use this file except in compliance with the License.
+% You may obtain a copy of the License at
+%
+% http://www.apache.org/licenses/LICENSE-2.0
+%
+% Unless required by applicable law or agreed to in writing, software
+% distributed under the License is distributed on an "AS IS" BASIS,
+% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+% See the License for the specific language governing permissions and
+% limitations under the License.
+
+% -----------------------------------------------------------------------------
+% HEi-VS Bachelor - Thesis project report template
+%
+% Originally based on the EPFL template with many adjustements from Marc
+% Demierre and Silvan Zahno
+% -----------------------------------------------------------------------------
+
+% Document settings
+\documentclass[a4paper,11pt,fleqn]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german,french,english]{babel}
+
+% -----------------------------------------------------------------------------
+% Preamble
+% -----------------------------------------------------------------------------
+\input{00-settings/metadata.tex}         % your project data
+\input{00-settings/settings_base.tex}    % template settings
+\input{00-settings/settings_custom.tex}  % your custom packages etc
+
+\begin{document}
+% -----------------------------------------------------------------------------
+% Front matter
+% -----------------------------------------------------------------------------
+\frontmatter
+
+\dominitoc
+\opt{tp}{
+  \input{01-head/titlepage.tex}
+}
+
+\opt{pre}{
+  % Thesis data formular
+  \newpage
+  \includepdf[page=1]{04-resources/thesis-data.pdf}
+
+  % Page for student info and signatures
+  \newpage
+  \input{01-head/reportinfo}
+
+  % Acknowledgments (your dedication etc)
+  \newpage
+  \input{01-head/acknowledgments}
+
+  % Abstract
+  \newpage
+  \input{01-head/abstract}
+}
+% Table of todos
+\opt{cmt}{
+  \newpage
+  \phantomsection
+  \listoftodos
+}
+
+% Table of contents
+\opt{toc}{
+  \newpage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{Contents}
+  \tableofcontents
+}
+
+% List of figures
+\opt{tof}{
+  \newpage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{List of Figures}
+  \listoffigures
+}
+
+% List of tables
+\opt{tot}{
+  \phantomsection
+  \addcontentsline{toc}{chapter}{List of Tables}
+  \listoftables
+}
+
+% List of listings
+\opt{tol}{
+  \phantomsection
+  \addcontentsline{toc}{chapter}{List of Listings}
+  \listoflistings
+}
+
+% Restore paragraphs
+\setlength{\parskip}{1em}
+
+% -----------------------------------------------------------------------------
+% Main matter
+% -----------------------------------------------------------------------------
+\mainmatter
+
+% Chapters
+\setcounter{mtc}{6} % Help minitoc skip the front matter chapters
+\include{02-main/ch1_introduction}
+\include{02-main/ch2_analysis}
+\include{02-main/ch3_design}
+\include{02-main/ch4_implementation}
+\include{02-main/ch5_validation}
+\include{02-main/ch6_conclusion}
+
+% Appendices
+\opt{apd}{
+  \appendix
+  \include{03-tail/01_appendix_example}
+}
+
+% -----------------------------------------------------------------------------
+% Back matter
+% -----------------------------------------------------------------------------
+\backmatter
+
+% Bibliography
+\opt{bib}{
+  \newpage
+  \printbibliography[heading=bibintoc]
+}
+
+% Glossary
+\opt{acr}{
+  \newpage
+  \printglossary[type=\acronymtype]
+}
+\opt{glo}{
+  \printglossary
+}
+
+% TODO: Add index
+
+% Add your CV here if you want
+% \includepdf[pages=-]{04-resources/cv.pdf}
+
+\end{document}
+

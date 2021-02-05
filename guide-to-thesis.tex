@@ -1,0 +1,1282 @@
+%    Copyright 2021 Silvan Zahno, HEI-Vs
+%
+% Licensed under the Apache License, Version 2.0 (the "License");
+% you may not use this file except in compliance with the License.
+% You may obtain a copy of the License at
+%
+% http://www.apache.org/licenses/LICENSE-2.0
+%
+% Unless required by applicable law or agreed to in writing, software
+% distributed under the License is distributed on an "AS IS" BASIS,
+% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+% See the License for the specific language governing permissions and
+% limitations under the License.
+
+% -----------------------------------------------------------------------------
+% HEi-VS Bachelor - Guide to Thesis Document
+%
+% This documents showns you have to use the template
+% -----------------------------------------------------------------------------
+
+% Document settings
+\documentclass[a4paper,11pt,fleqn]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[german,french,english]{babel}
+
+% -----------------------------------------------------------------------------
+% Preamble
+% -----------------------------------------------------------------------------
+%\input{00-settings/metadata.tex}         % your project data
+% Custom metadata
+% ------------------------------------------------------------------------------
+
+% Thesis info
+\newcommand{\ThesisTitle}{Guide to Thesis}
+\newcommand{\ThesisSubject}{How to use \latex for your thesis}
+\newcommand{\Orientation}{Systems Engineering}
+\newcommand{\Major}{Infotronics}
+\newcommand{\Year}{2021}
+\newcommand{\Version}{v1.0}
+\newcommand{\SubmissionDate}{\today}
+
+% Author
+\newcommand{\AuthorFirstName}{Silvan}
+\newcommand{\AuthorLastName}{Zahno}
+\newcommand{\AuthorEmail}{silvan.zahno@hevs.ch}
+\newcommand{\Author}{\AuthorFirstName\,\AuthorLastName}
+
+% Advisor
+\newcommand{\AdvisorFirstName}{Silvan}
+\newcommand{\AdvisorLastName}{Zahno}
+\newcommand{\Advisor}{\AdvisorFirstName\,\AdvisorLastName}
+
+% Main expert
+\newcommand{\ExpertFirstName}{Pierre}
+\newcommand{\ExpertLastName}{Pompili}
+\newcommand{\Expert}{\ExpertFirstName\,\ExpertLastName}
+
+% University
+\newcommand{\University}{HES-SO//Valais Wallis}
+
+% Location & Current Date
+\newcommand{\Date}{\today}
+\newcommand{\Place}{Sion}
+\newcommand{\Country}{Switzerland}
+
+% ------------------------------------------------------------------------------
+% Page Content
+\usepackage[tp, toc, tof, apd, glo, acr, bib]{optional} % only optionals for final thesis active
+
+\input{00-settings/settings_base.tex}    % template settings
+\input{00-settings/settings_custom.tex}  % your custom packages etc
+
+\begin{document}
+% -----------------------------------------------------------------------------
+% Front matter
+% -----------------------------------------------------------------------------
+\frontmatter
+
+\dominitoc
+\input{01-head/titlepage.tex}
+
+% Table of contents
+\opt{toc}{
+  \newpage
+  \phantomsection
+  \addcontentsline{toc}{chapter}{Contents}
+  \tableofcontents
+}
+
+% Restore paragraphs
+\setlength{\parskip}{1em}
+
+% -----------------------------------------------------------------------------
+% Main matter
+% -----------------------------------------------------------------------------
+\mainmatter
+
+\setcounter{mtc}{1} % Help minitoc skip the front matter chapters
+% -----------------------------------------------------------------------------
+\chapter{Installation}
+\minitoc\newpage
+
+\begin{enumerate}
+  \item Install \href{MiKTeX}{https://miktex.org/download}
+  \item MiKTeX Packages
+  \begin{itemize}
+    \item minted
+    \begin{itemize}
+      \item pip install pygments
+      \item add Python Scripts to \texttt{PATH} Environment Variable
+    \end{itemize}
+  \end{itemize}
+  \item Install your preferred IDE
+  \begin{itemize}
+    \item We use \href{https://code.visualstudio.com/}{Visual Studio Code}
+    \item With the following extensions
+    \begin{itemize}
+      \item \href{https://marketplace.visualstudio.com/items?itemName=torn4dom4n.latex-support}{LaTeX language support}
+      \item \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{LaTeX Workshop}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+% -----------------------------------------------------------------------------
+\chapter{Page Formatting}
+\minitoc\newpage
+
+\section{General Formatting}
+\subsection{Page Formatting}
+\begin{minted}{latex}
+\newpage        % jump to new page
+
+\par            % new paragraph
+\\              % new paragraph
+\\* or \newline % new line
+
+%               % start line comment
+
+
+\end{minted}
+
+\subsection{Font sizes}
+\begin{multicols}{2}
+  {\Huge Huge}\\{\huge huge}\\{\LARGE LARGE}\\{\Large Large}\\{\large large}\\{\normalsize normal (default)}\\{\small small}\\{\footnotesize footnotesize}\\{\scriptsize scriptsize}\\{\tiny tiny}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+{\Huge Huge}
+{\huge huge}
+{\LARGE LARGE}
+{\Large Large}
+{\large large}
+{\normalsize normal (default)}
+{\small small}
+{\footnotesize footnotesize}
+{\scriptsize scriptsize}
+{\tiny tiny}
+  \end{minted}
+\end{multicols}
+
+\subsection{Decorations}
+\begin{multicols}{2}
+  \textit{Italic}\\\texttt{Typewriter}\\\textbf{Bold}\\\texttt{Text}\\\textsf{Serif Font}\\\textrm{Serif (Roman)}\\\underline{Underline}\\\emph{Emphasis}\\
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\textit{Italic}
+\texttt{Typewriter}
+\textbf{Bold}
+\texttt{Text}
+\textsf{Serif}
+\textrm{Sans Serif (Roman)}
+\underline{Underline}
+\emph{Emphasis}
+  \end{minted}
+\end{multicols}
+
+\subsection{Text Alignment}
+\begin{multicols}{2}
+  \raggedright
+  left aligned text \\
+  \raggedleft
+  right aligned text \\
+  \centering
+  centered text \\
+  %\justify
+  %justified text \\
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\raggedright
+left aligned text \\
+\raggedleft
+right aligned text \\
+\centering
+centered text \\
+%\justify
+%justified text \\
+  \end{minted}
+\end{multicols}
+
+\subsection{Links}
+\begin{multicols}{2}
+  \url{http://hevs.ch} \\
+  \href{mailto:\AuthorEmail}{\AuthorEmail} \\
+  \href{http://hevs.ch}{Hevs Website}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\url{http://hevs.ch}
+\href{mailto:\AuthorEmail}{\AuthorEmail}
+\href{http://hevs.ch}{Hevs Website}
+  \end{minted}
+\end{multicols}
+
+\subsection{Cross referencing} \label{sec:crossref}
+Set labels and reference them afterwards. Labels can be set anywhere hereafter examples for sections, equations and images.
+
+\ref{sec:crossref} \nameref{sec:crossref}
+
+\begin{equation} \label{eq:1}
+  \sum_{i=0}^{\infty} a_i x^i
+\end{equation}
+The equations \ref{eq:1} is a power series.
+
+\begin{center}
+  \begingroup
+  \includegraphics[width=0.5\columnwidth]{placeholder.pdf}
+  \captionof{figure}{Figure with reference label}
+  \label{fig:figurelabel}
+  \endgroup
+\end{center}
+Figure \ref{fig:figurelabel} shows the image.
+
+\begin{minted}{latex}
+\section{Cross referencing} \label{crossref}
+\ref{crossref} \nameref{crossref}
+
+\begin{equation} \label{eq:1}
+  \sum_{i=0}^{\infty} a_i x^i
+\end{equation}
+The equations \ref{eq:1} is a power series.
+
+\begin{center}
+  \begingroup
+  \includegraphics[width=0.5\columnwidth]{placeholder.pdf}
+  \captionof{figure}{Figure with reference label}
+  \label{fig:figurelabel}
+  \endgroup
+\end{center}
+figure \ref{fig:figurelabel} shows the logo.
+\end{minted}
+
+% -----------------------------------------------------------------------------
+\chapter{General Elements}
+\minitoc\newpage
+
+\section{Sections}
+For creating Chapters, Sections and Subsections there are multiple levels available.
+Good practice is to limit the number of level to \mintinline{latex}{\subsubsection}
+\begin{minted}{latex}
+ 0 = \chapter{Chapter}
+ 1 = \section{First Section}
+ 2 = \subsection{Second Section}
+ 3 = \subsubsection{Third Section}
+ 4 = \paragraph{Paragraph}
+ 5 = \subparagraph{Subpararaph}
+\end{minted}
+
+\section{Lists}
+\begin{multicols}{2}
+  \begin{itemize}
+    \item One
+    \item Two
+  \end{itemize}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begin{itemize}
+  \item One
+  \item Two
+\end{itemize}
+   \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \begin{itemize}
+    \item One
+    \begin{itemize}
+      \item Two
+      \item Three
+    \end{itemize}
+    \item Four
+  \end{itemize}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begin{itemize}
+  \item One
+  \begin{itemize}
+    \item Two
+    \item Three
+  \end{itemize}
+  \item Four
+\end{itemize}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item One
+    \item Two
+  \end{enumerate}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begin{enumerate}
+  \item One
+  \item Two
+\end{enumerate}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \begin{enumerate}
+    \item One
+    \begin{enumerate}
+      \item Two
+      \item Three
+    \end{enumerate}
+    \item Four
+  \end{enumerate}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begin{enumerate}
+  \item One
+  \begin{enumerate}
+    \item Two
+    \item Three
+  \end{enumerate}
+  \item Four
+\end{enumerate}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \begin{todolist}[noitemsep]
+    \item Normal item
+    \item[\cmark] cmark item
+    \item[\xmark] xmark item
+    \item[\done] done item
+    \item[\wontfix] wontfix item
+  \end{todolist}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begin{todolist}
+  \item Normal item
+  \item[\cmark] cmark item
+  \item[\xmark] xmark item
+  \item[\done] done item
+  \item[\wontfix] wontfix item
+\end{todolist}
+  \end{minted}
+\end{multicols}
+
+\section{Multicolumns}
+\begin{multicols}{2}
+  \begin{multicols}{2}
+    Column 1
+    \vfill\null\columnbreak
+    Column 2
+  \end{multicols}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begin{multicols}{2}
+  Column 1
+  \vfill\null\columnbreak
+  Column 2
+\end{multicols}
+  \end{minted}
+\end{multicols}
+
+% -----------------------------------------------------------------------------
+\chapter{Images}
+\minitoc\newpage
+
+\begin{multicols}{2}
+  \begin{center}
+    \begingroup
+    \includegraphics[width=0.5\columnwidth]{placeholder.pdf}
+    \captionof{figure}{Defined figure placement}
+    \label{fig:figureplacement}
+    \endgroup
+  \end{center}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begin{center}
+  \begingroup
+  \includegraphics[width=0.5\columnwidth]placeholder.pdf}
+  \captionof{figure}{Defined figure placement}
+  \label{fig:figureplacement}
+  \endgroup
+\end{center}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \begin{figure}
+    \includegraphicswidth=0.5\columnwidth]{placeholder.pdf}
+    \captionof{figure}{Automatic figure placement}
+    \label{fig:automaticfigureplacement}
+  \end{figure}
+
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\begin{figure}
+  \includegraphicswidth=0.5\columnwidth]{placeholder.pdf}
+  \captionof{figure}{Automatic figure placement}
+  \label{fig:automaticfigureplacement}
+\end{figure}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols){2}
+
+  This section contains examples of figures: \ref{fig:subimages}, \ref{fig:topleft}, \ref{fig:topright}, \ref{fig:bottomleft}, \ref{fig:bottomright}
+
+  \begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{placeholder.pdf}
+      \caption{topleft}
+      \label{fig:topleft}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.45\textwidth}
+      \includegraphics[width=\textwidth]{placeholder.pdf}
+      \caption{topright}
+      \label{fig:topright}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}{0.45\textwidth}
+      \includegraphics[width=\textwidth]{placeholder.pdf}
+      \caption{bottomleft}
+      \label{fig:bottomleft}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+    %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}{0.45\textwidth}
+      \includegraphics[width=\textwidth]{placeholder.pdf}
+      \caption{bottomright}
+      \label{fig:bottomright}
+    \end{subfigure}
+    \caption{Example subcaption}\label{fig:subimages}
+  \end{figure}
+
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+This section contains examples of figures: \ref{fig:floatingimage}, \ref{fig:topleft}, \ref{fig:topright}, \ref{fig:bottomleft}, \ref{fig:bottomright}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{placeholder.pdf}
+    \caption{topleft}
+    \label{fig:topleft}
+  \end{subfigure}
+  ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+  %(or a blank line to force the subfigure onto a new line)
+  \begin{subfigure}[b]{0.45\textwidth}
+    \includegraphics[width=\textwidth]{placeholder.pdf}
+    \caption{topright}
+    \label{fig:topright}
+  \end{subfigure}
+  ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+  %(or a blank line to force the subfigure onto a new line)
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{placeholder.pdf}
+    \caption{bottomleft}
+    \label{fig:bottomleft}
+  \end{subfigure}
+  ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+  %(or a blank line to force the subfigure onto a new line)
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{placeholder.pdf}
+    \caption{bottomright}
+    \label{fig:bottomright}
+  \end{subfigure}
+  \caption{Example subcaption}\label{fig:subimages}
+\end{figure}
+  \end{minted}
+\end{multicols}
+
+% -----------------------------------------------------------------------------
+\chapter{Tables}
+\minitoc\newpage
+
+\begin{multicols}{2}
+  \centering
+  \begingroup
+  \begin{tabular}{l : c | r || r V{2.7} r \vline}
+    Left & Center & Right & Right & Right \\
+    1.1 & 1.2 & 1.3 & 1.4 & 1.5 \\ \hdashline
+    2.1 & 2.2 & 2.3 & 2.4 & 2.5 \\ \hline
+    3.1 & 3.2 & 3.3 & 3.4 & 3.5 \\ \hline \hline
+    4.1 & 4.2 & 4.3 & 4.4 & 4.5 \\ \hlineB{2.7}
+    5.1 & 5.2 & 5.3 & 5.4 & 5.5 \\ \toprule
+    6.1 & 6.2 & 6.3 & 6.4 & 6.5 \\ \midrule
+    7.1 & 7.2 & 7.3 & 7.4 & 7.5 \\ \bottomrule
+  \end{tabular}
+  \captionof{table}{Table Example 1}
+  \label{tab:ex1}
+  \endgroup
+
+  \vfill\null\columnbreak
+  \centering
+  \begin{minted}{latex}
+\begingroup
+\begin{tabular}{l : c | r || r V{2.7} r \vline}
+  Left & Center & Right & Right & Right \\
+  1.1 & 1.2 & 1.3 & 1.4 & 1.5 \\ \hdashline
+  2.1 & 2.2 & 2.3 & 2.4 & 2.5 \\ \hline
+  3.1 & 3.2 & 3.3 & 3.4 & 3.5 \\ \hline \hline
+  4.1 & 4.2 & 4.3 & 4.4 & 4.5 \\ \hlineB{2.7}
+  5.1 & 5.2 & 5.3 & 5.4 & 5.5 \\ \toprule
+  6.1 & 6.2 & 6.3 & 6.4 & 6.5 \\ \midrule
+  7.1 & 7.2 & 7.3 & 7.4 & 7.5 \\ \bottomrule
+\end{tabular}
+\captionof{table}{Table Example 1}
+\label{tab:ex1}
+\endgroup
+
+   \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \begingroup
+  \begin{tabular}{c V{2.7} c  c V{2.7} c}
+    X & $Q_1$ & $Q_0$ & Y \\ \hline \hline
+    0 & 0 & 0 &  0 \\ \hline
+    0 & 0 & 1 &  1 \\ \hline
+    0 & 1 & 0 &  1 \\ \hline
+    0 & 1 & 1 &  0 \\ \hlineB{2.7}
+    1 & 0 & 0 &  1 \\ \hline
+    1 & 0 & 1 &  1 \\ \hline
+    1 & 1 & 0 &  1 \\ \hline
+    1 & 1 & 1 &  0 \\ \hline
+  \end{tabular}
+  \captionof{table}{Table Example 2}
+  \label{tab:ex2}
+  \endgroup
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begingroup
+\begin{tabular}{c V{2.7} c  c V{2.7} c}
+  X & $Q_1$ & $Q_0$ & Y \\ \hline \hline
+  0 & 0 & 0 &  0 \\ \hline
+  0 & 0 & 1 &  1 \\ \hline
+  0 & 1 & 0 &  1 \\ \hline
+  0 & 1 & 1 &  0 \\ \hlineB{2.7}
+  1 & 0 & 0 &  1 \\ \hline
+  1 & 0 & 1 &  1 \\ \hline
+  1 & 1 & 0 &  1 \\ \hline
+  1 & 1 & 1 &  0 \\ \hline
+\end{tabular}
+\captionof{table}{Table Example 2}
+\label{tab:ex2}
+\endgroup
+
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \begingroup
+  \begin{tabular}{ | c | c | }
+    \hline
+    \multicolumn{1}{|c|}{\emph{ Operator }} & \multicolumn{1}{|c|}{\emph{ Beschreibung}} \\ \hline
+    +  & \multicolumn{1}{|l|}{Addition} \\ \hline
+    -  & \multicolumn{1}{|l|}{Substraktion} \\ \hline
+  \end{tabular}
+  \captionof{table}{Table Example 3}
+  \label{tab:ex3}
+  \endgroup
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begingroup
+  \begin{tabular}{ | c | c | }
+    \hline
+    \multicolumn{1}{|c|}{\emph{ Operator }} & \multicolumn{1}{|c|}{\emph{ Beschreibung}} \\ \hline
+    +  & \multicolumn{1}{|l|}{Addition} \\ \hline
+    -  & \multicolumn{1}{|l|}{Substraktion} \\ \hline
+  \end{tabular}
+  \captionof{table}{Table Example 3}
+  \label{tab:ex3}
+\endgroup
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \begingroup
+  \begin{tabular}{|l||*{2}{c|}}\hline
+    \backslashbox{Room}{Date}&\makebox[3em]{Col 1}&\makebox[3em]{Col 2} \\ \hline\hline
+    Row 1 &&\\\hline
+    Row 2 &&\\\hline
+    Row 3 &&\\\hline
+  \end{tabular}
+  \captionof{table}{Table Example 4}
+  \label{tab:ex4}
+  \endgroup
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\begingroup
+\begin{tabular}{|l||*{2}{c|}}\hline
+  \backslashbox{Room}{Date}&\makebox[3em]{Col 1}&\makebox[3em]{Col 2} \\ \hline\hline
+  Row 1 &&\\\hline
+  Row 2 &&\\\hline
+  Row 3 &&\\\hline
+\end{tabular}
+\captionof{table}{Table Example 4}
+\label{tab:ex4}
+\endgroup
+\end{minted}
+\end{multicols}
+
+% -----------------------------------------------------------------------------
+\chapter{Colors}
+\minitoc\newpage
+
+\begin{center}
+    \begin{tabular}{l | l}
+        Latex Symbol                             & Latex Code                  \\ \hline \hline
+        \textcolor{black}{black}                 & \mintinline{latex}{\textcolor{black}{black}} \\
+        \textcolor{white}{white}                 & \mintinline{latex}{\textcolor{white}{white}} \\
+        \textcolor{red}{red}                     & \mintinline{latex}{\textcolor{red}{red}} \\
+        \textcolor{yellow}{yellow}               & \mintinline{latex}{\textcolor{yellow}{yellow}} \\
+        \textcolor{lime}{lime}                   & \mintinline{latex}{\textcolor{lime}{lime}} \\
+        \textcolor{olive}{olive}                 & \mintinline{latex}{\textcolor{olive}{olive}} \\
+        \textcolor{green}{green}                 & \mintinline{latex}{\textcolor{green}{green}} \\
+        \textcolor{teal}{teal}                   & \mintinline{latex}{\textcolor{teal}{teal}} \\
+        \textcolor{blue}{blue}                   & \mintinline{latex}{\textcolor{blue}{blue}} \\
+        \textcolor{HEICyan}{HEICyan}             & \mintinline{latex}{\textcolor{HEICyan}{HEICyan}} \\
+        \textcolor{HEIMagenta}{HEIMagenta}       & \mintinline{latex}{\textcolor{HEIMagenta}{HEIMagenta}} \\
+        \textcolor{HEIYellow}{HEIYellow}         & \mintinline{latex}{\textcolor{HEIYellow}{HEIYellow}} \\
+        \textcolor{HEIGreen}{HEIGreen}           & \mintinline{latex}{\textcolor{HEIGreen}{HEIGreen}} \\
+        \textcolor{SPLGreen}{SPLGreen}           & \mintinline{latex}{\textcolor{SPLGreen}{SPLGreen}} \\
+        \textcolor{SPLBlue}{SPLBlue}             & \mintinline{latex}{\textcolor{SPLBlue}{SPLBlue}} \\
+        \textcolor{SPLPurple}{SPLPurple}         & \mintinline{latex}{\textcolor{SPLPurple}{SPLPurple}} \\
+        \textcolor{mGray20}{mGray20}             & \mintinline{latex}{\textcolor{mGray20}{mGray20}} \\
+        \textcolor{mGray40}{mGray40}             & \mintinline{latex}{\textcolor{mGray40}{mGray40}} \\
+        \textcolor{mGray60}{mGray60}             & \mintinline{latex}{\textcolor{mGray60}{mGray60}} \\
+        \textcolor{mGray80}{mGray80}             & \mintinline{latex}{\textcolor{mGray80}{mGray80}} \\
+        \textcolor{mWhite}{mWhite}               & \mintinline{latex}{\textcolor{mWhite}{mWhite}} \\
+        \textcolor{mBlack}{mBlack}               & \mintinline{latex}{\textcolor{mBlack}{mBlack}} \\
+        \textcolor{mPink}{mPink}                 & \mintinline{latex}{\textcolor{mPink}{mPink}} \\
+        \textcolor{coloraccent1}{Accent Color 1} & \mintinline{latex}{\textcolor{coloraccent1}{Accent Color 1}} \\
+        \textcolor{coloraccent2}{Accent Color 2} & \mintinline{latex}{\textcolor{coloraccent2}{Accent Color 2}} \\
+        \textcolor{coloraccent3}{Accent Color 3} & \mintinline{latex}{\textcolor{coloraccent3}{Accent Color 3}} \\
+    \end{tabular}
+\end{center}
+
+\begin{multicols}{2}
+    %\pagecolor{black}  % would make this and all comming pages black
+    {
+        \color{mGray80}
+        Test text \\
+    }
+    {
+        \color{coloraccent1}
+        \rule{\linewidth}{1mm}
+    }
+    \colorbox{coloraccent2}{colorbox}
+
+    \vfill\null\columnbreak
+
+    \begin{minted}{latex}
+%\pagecolor{black}  % would make this and all comming pages black
+{
+\color{mGray80}
+Test text \\
+}
+{
+\color{coloraccent1}
+\rule{\linewidth}{1mm}
+}
+\colorbox{coloraccent2}{colorbox}
+    \end{minted}
+\end{multicols}
+
+% -----------------------------------------------------------------------------
+\chapter{Code}
+\minitoc\newpage
+
+\section{Inline Code}
+\begin{multicols}{2}
+  Inline minted \mintinline{cpp}{int x = 0} \\
+  Inline code \lstinline{int x = 0}
+
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+Inline minted \mintinline{cpp}{int x = 0}
+Inline code \lstinline{int x = 0}
+  \end{minted}
+\end{multicols}
+
+\section{Bloc Code}
+
+\begin{multicols}{2}
+  \begin{minted}
+[
+fontsize=\scriptsize,
+linenos
+]{python}
+import numpy as np
+class PiClass:
+""" Pi class for getting pi value """
+  def __init__():
+  """ Returns value of Pi """
+    return np.pi
+\end{minted}
+
+    \vfill\null\columnbreak
+
+    \begin{minted}{latex}
+\begin{minted}
+[
+fontsize=\scriptsize,
+linenos
+]{python}
+import numpy as np
+  class PiClass:
+  """ Pi class for getting pi value """
+    def __init__():
+    """ Returns value of Pi """"
+      return np.pi
+\end{minte d}
+    \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \usemintedstyle{monokai}
+  \begin{minted}[bgcolor=black!80,]{python}
+import numpy as np
+class PiClass:
+""" Pi class for getting pi value """
+  def __init__():
+  """ Returns value of Pi """
+    return np.pi
+  \end{minted}
+  \usemintedstyle{\codecolorscheme}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\usemintedstyle{monokai}
+\begin{minted}[bgcolor=black!80]{python}
+import numpy as np
+class PiClass:
+""" Pi class for getting pi value """
+  def __init__():
+  """ Returns value of Pi """
+    return np.pi
+\end{minte d}
+    \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \usemintedstyle{bw}
+  \begin{minted}
+  [  frame=lines,
+  framesep=2mm,
+  baselinestretch=1.2,
+  bgcolor=gray!20,]{python}
+import numpy as np
+class PiClass:
+""" Pi class for getting pi value """
+  def __init__():
+  """ Returns value of Pi """
+    return np.pi
+  \end{minted}
+  \usemintedstyle{\codecolorscheme}
+  \vfill\null\columnbreak
+
+  \begin{minted}{latex}
+\usemintedstyle{bw}
+\begin{minted}
+[frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+bgcolor=gray!20,]{python}
+import numpy as np
+class PiClass:
+""" Pi class for getting pi value """
+  def __init__():
+  """ Returns value of Pi """
+    return np.pi
+\end{minte d}
+  \end{minted}
+\end{multicols}
+
+\section{Listings}
+
+\begin{multicols}{2}
+  \begin{center}
+    \inputminted{java}{02-main/listings/HelloWorld.java}
+    \captionof{listing}{listing example}
+    \label{lst:listing_example}
+  \end{center}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\begin{center}
+  \inputminted{java}{02-main/listings/HelloWorld.java}
+  \captionof{listing}{listing example}
+  \label{lst:listing_example}
+\end{center}
+  \end{minted}
+
+\end{multicols}
+
+% -----------------------------------------------------------------------------
+\chapter{MathJax}
+\minitoc\newpage
+
+\begin{itemize}
+  \item \href{docs.mathjax.org/en/latest/tex.html}{Mathjax Latest Documentation}
+  \item \href{https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference}{Stack Exchange Basic Tutorial and Quick Reference}
+  \item \href{https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols}{List of LaTeX Mathematical Symbols}
+  \item \href{https://latex.wikia.org/wiki/List_of_LaTeX_symbols}{List of LaTeX Symbols}
+\end{itemize}
+
+\section{Equations}
+
+\subsection{Environments}
+The package \mintinline{latex}{amsmath} features 2 different environments \mintinline{latex}{align}, \mintinline{latex}{split}, \mintinline{latex}{multiline}
+
+\subsubsection{align} \newline
+Numbered equations aligned at points marked with \mintinline{latex}{\&} usually just before a relation.
+\begin{multicols}{2}
+  \begin{align}
+    a_1& =b_1+c_1\\
+    a_2& =b_2+c_2-d_2+e_2
+  \end{align}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\begin{align}
+  a_1& =b_1+c_1\\
+  a_2& =b_2+c_2-d_2+e_2
+\end{align}
+  \end{minted}
+\end{multicols}
+
+\subsubsection{split} \newline
+Similar alignment to \mintinline{latex}{align}, but the whole construct fits within equation and is numbered as a unit.
+\begin{multicols}{2}
+  \begin{equation}
+    \begin{split}
+      a& =b+c-d\\
+       & \quad +e-f\\
+       & =g+h\\
+       & =i
+    \end{split}
+  \end{equation}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\begin{equation}
+  \begin{split}
+    a& =b+c-d\\
+     & \quad +e-f\\
+     & =g+h\\
+     & =i
+  \end{split}
+\end{equation}
+  \end{minted}
+\end{multicols}
+
+\subsubsection{multline} \newline
+For long expressions taking more than one line, with no specified alignment points.
+\begin{multicols}{2}
+  \begin{multline}
+    a+b+c+d+e+f+g\\
+    l+m+n+o+p+q+r
+  \end{multline}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\begin{multline}
+  a+b+c+d+e+f+g\\
+  l+m+n+o+p+q+r
+\end{multline}
+  \end{minted}
+\end{multicols}
+
+\section{Symbols}
+Mathjax code need to be places between \$ Symbols
+\begin{itemize}
+  \item \mintinline{latex}{$...$}: for inline Mathjax
+  \item \mintinline{latex}{$$...$$}: for bloc Mathjax
+\end{itemize}
+
+\section{Text \& Additions}
+\begin{center}
+  \begin{tabular}{l | l V{2.7} l | l}
+    Symbol                     & Code                                         & Symbol                       & Code                                           \\ \hline \hline
+    $\text{normal text}$       & \mintinline{latex}{\text{normal text}}       & $\textbf{bold text}$         & \mintinline{latex}{\textbf{bold text}}         \\
+    $\textit{italic text}$     & \mintinline{latex}{\textit{italic text}}     & $\texttt{fixspace text}$     & \mintinline{latex}{\texttt{fixspace text}}     \\
+    $Q_1$ $I_{min}$            & \mintinline{latex}{Q_1 I_{min}}              & $x^2$ $x^{20}$               & \mintinline{latex}{x^2 x^{20}}                 \\
+    $\acute{x}$                & \mintinline{latex}{\acute{x}}                & $\grave{x}$                  & \mintinline{latex}{\grave{x}}                  \\
+    $\dot{x}$                  & \mintinline{latex}{\dot{x}}                  & $\ddot{x}$                   & \mintinline{latex}{\ddot{x}}                   \\
+    $\bar{x}$                  & \mintinline{latex}{\bar{x}}                  & $\tilde{x}$                  & \mintinline{latex}{\tilde{x}}                  \\
+    $\hat{x}$                  & \mintinline{latex}{\hat{x}}                  & $\check{x}$                  & \mintinline{latex}{\check{x}}                  \\
+    $\vec{x}$                  & \mintinline{latex}{\vec{x}}                  & $\breve{x}$                  & \mintinline{latex}{\breve{x}}                  \\
+    $\overset{over}{X}$        & \mintinline{latex}{\overset{over}{X}}        & $\underset{under}{X}$        & \mintinline{latex}{\underset{under}{X}}        \\
+    $\overline{xxx}$           & \mintinline{latex}{\overline{xxx}}           & $\underline{xxx}$            & \mintinline{latex}{\underline{xxx}}            \\
+    $\overbrace{xxx}$          & \mintinline{latex}{\overbrace{xxx}}          & $\underbrace{xxx}$           & \mintinline{latex}{\underbrace{xxx}}           \\
+    $\overleftarrow{xxx}$      & \mintinline{latex}{\overleftarrow{xxx}}      & $\overrightarrow{xxx}$       & \mintinline{latex}{\overrightarrow{xxx}}       \\
+    $\xleftarrow[under]{over}$ & \mintinline{latex}{\xleftarrow[under]{over}} & $\xrightarrow[under]{over}$  & \mintinline{latex}{\xrightarrow[under]{over}}  \\
+  \end{tabular}
+\end{center}
+
+\section{Spaces}
+\begin{center}
+  \begin{tabular}{l | l V{2.7} l | l V{2.7} l | l}
+    Symbol              & Code                                  & Symbol              & Code                                   & Symbol               & Code                 \\ \hline \hline
+    $a \mspace{3mu} b$  & \mintinline{latex}{a \mspace{3mu} b}  & $a \, b$            & \mintinline{latex}{a \, b}             & $a \thinspace b$     & \mintinline{latex}{a \thinspace b}     \\
+    $a \mspace{4mu} b$  & \mintinline{latex}{a \mspace{4mu} b}  & $a \:  b$           & \mintinline{latex}{a \: b}             & $a \medspace b$      & \mintinline{latex}{a \medspace b}      \\
+    $a \mspace{5mu} b$  & \mintinline{latex}{a \mspace{5mu} b}  & $a \; b$            & \mintinline{latex}{a \; b}             & $a \thickspace b$    & \mintinline{latex}{a \thickspace b}    \\
+    $a \mspace{6mu} b$  & \mintinline{latex}{a \mspace{6mu} b}  & $a \ b$             & \mintinline{latex}{a \ b}              & -                    & -                    \\
+    $a \mspace{18mu} b$ & \mintinline{latex}{a \mspace{18mu} b} & $a \quad b$         & \mintinline{latex}{a \quad b}          & -                    & -                    \\
+    $a \mspace{36mu} b$ & \mintinline{latex}{a \mspace{36mu} b} & $a \qquad b$        & \mintinline{latex}{a \qquad b}         & -                    & -                    \\
+    $a \mspace{-3mu} b$ & \mintinline{latex}{a \mspace{-3mu} b} & $a \! b$            & \mintinline{latex}{a \, b}             & $a \negthinspace b$  & \mintinline{latex}{a \negthinspace b}  \\
+    $a \mspace{-4mu} b$ & \mintinline{latex}{a \mspace{-4mu} b} & -                   & -                    & $a \negmedspace b$   & \mintinline{latex}{a \negmedspace b}   \\
+    $a \mspace{-5mu} b$ & \mintinline{latex}{a \mspace{-5mu} b} & -                   & -                    & $a \negthickspace b$ & \mintinline{latex}{a \negthickspace b} \\
+  \end{tabular}
+\end{center}
+
+\section{Quotes}
+\begin{center}
+  \begin{tabular}{l | l | l}
+    Symbol       & Code                     & Alt Code \\ \hline \hline
+    $\q$         & \mintinline{latex}{\q}   & \mintinline{latex}{\textnormal{\textquotesingle}} \\
+    $\ql$        & \mintinline{latex}{\ql}  & \mintinline{latex}{\textnormal{\textquoteleft}} \\
+    $\qr$        & \mintinline{latex}{\qr}  & \mintinline{latex}{\textnormal{\textquoteright}} \\
+    $\qq$        & \mintinline{latex}{\qq}  & \mintinline{latex}{\textnormal{\textquotedblright}} \\
+    $\qql$       & \mintinline{latex}{\qql} & \mintinline{latex}{\textnormal{\textquotedblleft}} \\
+    $\qqr$       & \mintinline{latex}{\qqr} & \mintinline{latex}{\textnormal{\textquotedblright}} \\
+  \end{tabular}
+\end{center}
+
+\section{Greek Letters}
+\begin{center}
+  \begin{tabular}{l | l}
+    Symbol                                & Code \\ \hline \hline
+    $A \alpha$                            & \mintinline{latex}{A \alpha} \\
+    $B \beta$                             & \mintinline{latex}{B \beta} \\
+    $\Gamma \gamma$                       & \mintinline{latex}{\Gamma \gamma} \\
+    $\Delta \delta$                       & \mintinline{latex}{\Delta \delta} \\
+    $E \epsilon \varepsilon $             & \mintinline{latex}{E \epsilon \varepsilon} \\
+    $Z \zeta$                             & \mintinline{latex}{Z \zeta} \\
+    $H \eta$                              & \mintinline{latex}{H \eta} \\
+    $\Theta \theta \vartheta$             & \mintinline{latex}{\Theta \theta \vartheta} \\
+    $I \iota$                             & \mintinline{latex}{I\iota} \\
+    $K \kappa$                            & \mintinline{latex}{K \kappa} \\
+    $\Lambda \lambda$                     & \mintinline{latex}{\Lambda \lambda} \\
+    $M \mu$                               & \mintinline{latex}{M \mu} \\
+    $N \nu$                               & \mintinline{latex}{N \nu} \\
+    $\Xi \xi$                             & \mintinline{latex}{\Xi \xi} \\
+    $O \ominus$                           & \mintinline{latex}{O \ominus} \\
+    $\Pi \pi \varpi$                      & \mintinline{latex}{\Pi \pi \varpi} \\
+    $P \rho$                              & \mintinline{latex}{P \rho} \\
+    $\Sigma \sigma \varsigma$             & \mintinline{latex}{\Sigma \sigma \varsigma} \\
+    $T \tau$                              & \mintinline{latex}{T \tau} \\
+    $\Upsilon \upsilon$                   & \mintinline{latex}{\Upsilon \upsilon} \\
+    $\Phi \phi \varphi$                   & \mintinline{latex}{\Phi \phi \varphi} \\
+    $X \chi$                              & \mintinline{latex}{X \chi} \\
+    $\Psi \psi$                           & \mintinline{latex}{\Psi \psi} \\
+    $\Omega \omega$                       & \mintinline{latex}{\Omega \omega} \\
+  \end{tabular}
+\end{center}
+
+\section{Symbols}
+\subsection{Relational Operators}
+
+\begin{center}
+  \begin{tabular}{l | l V{2.7} l | l}
+    Symbol                                & Code                            & Symbol                                & Code \\ \hline \hline
+    $<$                                   & \mintinline{latex}{<}           & $>$                                   & \mintinline{latex}{>} \\
+    $\nless$                              & \mintinline{latex}{\nless}      & $\ngtr$                               & \mintinline{latex}{\ngtr} \\
+    $\leq$                                & \mintinline{latex}{\leq}        & $\geq$                                & \mintinline{latex}{\geq} \\
+    $\leqslant$                           & \mintinline{latex}{\leqslant}   & $\geqslant$                           & \mintinline{latex}{\geqslant} \\
+    $\nleq$                               & \mintinline{latex}{\nleq}       & $\ngeq$                               & \mintinline{latex}{\ngeq} \\
+    $\nleqslant$                          & \mintinline{latex}{\nleqslant}  & $\ngeqslant$                          & \mintinline{latex}{\ngeqslant} \\
+    $\ll$                                 & \mintinline{latex}{\ll}         & $\gg$                                 & \mintinline{latex}{\gg} \\
+    $\lll$                                & \mintinline{latex}{\lll}        & $\ggg$                                & \mintinline{latex}{\ggg} \\
+    $\subset$                             & \mintinline{latex}{\subset}     & $\supset$                             & \mintinline{latex}{\supset} \\
+    $\not\subset$                         & \mintinline{latex}{\not\subset} & $\not\supset$                         & \mintinline{latex}{\not\supset} \\
+    $\subseteq$                           & \mintinline{latex}{\subseteq}   & $\supseteq$                           & \mintinline{latex}{\supseteq} \\
+    $\nsubseteq$                          & \mintinline{latex}{\nsubseteq}  & $\nsupseteq$                          & \mintinline{latex}{\nsupseteq} \\
+  \end{tabular}
+
+  \begin{tabular}{l | l}
+    Symbol                                & Code \\ \hline \hline
+    $=$                                   & \mintinline{latex}{=} \\
+    $\equiv$                              & \mintinline{latex}{\equiv} \\
+    $\approx$                             & \mintinline{latex}{\approx} \\
+    $\cong$                               & \mintinline{latex}{\cong} \\
+    $\simeq$                              & \mintinline{latex}{\simeq} \\
+    $\sim$                                & \mintinline{latex}{\sim} \\
+    $\propto$                             & \mintinline{latex}{\propto} \\
+    $\neq \ne$                            & \mintinline{latex}{\neq \ne} \\
+  \end{tabular}
+\end{center}
+
+\subsection{Arrows}
+\begin{center}
+  \begin{tabular}{l | l V{2.7} l | l}
+     Symbol                               &  Code                               &  Symbol             &  Code \\ \hline \hline
+    $\rightarrow \to$                     & \mintinline{latex}{\rightarrow \to} & $\leftarrow \gets$  & \mintinline{latex}{\leftarrow \gets} \\
+    $\Rightarrow$                         & \mintinline{latex}{\Rightarrow}     & $\Leftarrow$        & \mintinline{latex}{\Leftarrow} \\
+    $\longrightarrow$                     & \mintinline{latex}{\longrightarrow} & $\longrightarrow$   & \mintinline{latex}{\longrightarrow} \\
+    $\Longrightarrow$                     & \mintinline{latex}{\Longrightarrow} & $\Longrightarrow$   & \mintinline{latex}{\Longrightarrow} \\
+    $\mapsto$                             & \mintinline{latex}{\mapsto}         & -                   & - \\
+    $\longmapsto$                         & \mintinline{latex}{\longmapsto}     & -                   & - \\
+    $\uparrow$                            & \mintinline{latex}{\uparrow}        & $\Uparrow$          & \mintinline{latex}{\Uparrow} \\
+    $\downarrow$                          & \mintinline{latex}{\downarrow}      & $\Downarrow$        & \mintinline{latex}{\Downarrow} \\
+    $\updownarrow$                        & \mintinline{latex}{\updownarrow}    & $\Updownarrow$      & \mintinline{latex}{\Updownarrow} \\
+  \end{tabular}
+\end{center}
+
+\subsection{Boolsche Algebra Symbols}
+\begin{center}
+  \begin{tabular}{l V{2.7} l | l}
+    Operator        & Symbol                                 & Code \\ \hline \hline
+    NEGATE          & $\neg \; \overline{x} \; \bar{x}$      & \mintinline{latex}{\neg \overline{x} \bar{x}} \\
+    AND             & $\bigwedge \; \wedge \; * \; \And$     & \mintinline{latex}{\bigwedge \wedge * \And} \\
+    OR              & $\bigvee \; \vee \; + \; \mid$         & \mintinline{latex}{\bigvee \vee + \mid} \\
+    XOR             & $\oplus$                               & \mintinline{latex}{\oplus} \\
+  \end{tabular}
+\end{center}
+
+\subsection{Other Symbols}
+\begin{center}
+  \begin{tabular}{l | l V{2.7} l | l V{2.7} l | l}
+    Symbol          & Code                              & Symbol               & Code                                   & Symbol            & Code \\ \hline \hline
+    $\#$            & \mintinline{latex}{\#}            & $\sharp$             & \mintinline{latex}{\sharp}             & $\S$              & \mintinline{latex}{\S} \\
+    $\lozenge$      & \mintinline{latex}{\lozenge}      & $\blacklozenge$      & \mintinline{latex}{\blacklozenge}      & $\infty$          & \mintinline{latex}{\infty} \\
+    $\square$       & \mintinline{latex}{\square}       & $\blacksquare$       & \mintinline{latex}{\blacksquare}       & $\spadesuit$      & \mintinline{latex}{\spadesuit} \\
+    $\triangle$     & \mintinline{latex}{\triangle}     & $\blacktriangle$     & \mintinline{latex}{\blacktriangle}     & $\clubsuit$       & \mintinline{latex}{\clubsuit} \\
+    $\triangledown$ & \mintinline{latex}{\triangledown} & $\blacktriangledown$ & \mintinline{latex}{\blacktriangledown} & $\heartsuit$      & \mintinline{latex}{\heartsuit} \\
+    $\diagup$       & \mintinline{latex}{\diagup}       & $\diagdown$          & \mintinline{latex}{\diagdown}          & $\diamondsuit$    & \mintinline{latex}{\diamondsuit} \\
+    $\varnothing$   & \mintinline{latex}{\varnothing}   & $\emptyset$          & \mintinline{latex}{\emptyset}          & $\angle$          & \mintinline{latex}{\angle} \\
+    $\square$       & \mintinline{latex}{\square}       & $\surd$              & \mintinline{latex}{\surd}              & $\measuredangle$  & \mintinline{latex}{\measuredangle} \\
+  \end{tabular}
+\end{center}
+
+\section{Math Symbols}
+\subsection{Trigonometry}
+\begin{center}
+  \begin{tabular}{l | l V{2.7} l | l V{2.7} l | l}
+    Symbol       & Code                         & Symbol       & Code                         & Symbol       & Code \\ \hline \hline
+    $\sin$       & \mintinline{latex}{\sin}     & $\arcsin$    & \mintinline{latex}{\arcsin}  & $\sinh$      & \mintinline{latex}{\sinh} \\
+    $\cos$       & \mintinline{latex}{\cos}     & $\arccos$    & \mintinline{latex}{\arccos}  & $\cosh$      & \mintinline{latex}{\cosh} \\
+    $\tan$       & \mintinline{latex}{\tan}     & $\arctan$    & \mintinline{latex}{\arctan}  & $\tanh$      & \mintinline{latex}{\tanh} \\
+  \end{tabular}
+\end{center}
+
+\subsection{Prefix Operators}
+\begin{center}
+  \begin{tabular}{l | l V{2.7} l | l V{2.7} l | l}
+    Symbol       & Code                         & Symbol       & Code                          & Symbol       & Code   \\ \hline \hline
+    $\int$       & \mintinline{latex}{\int}     & $\oint$      & \mintinline{latex}{\oint}     & $\sum$       & \mintinline{latex}{\sum}       \\
+    $\prod$      & \mintinline{latex}{\prod}    & $\coprod$    & \mintinline{latex}{\coprod}   & -            & -                              \\
+    $\bigodot$   & \mintinline{latex}{\bigodot} & $\bigoplus$  & \mintinline{latex}{\bigoplus} & $\bigotimes$ & \mintinline{latex}{\bigotimes} \\
+    $\bigcap$    & \mintinline{latex}{\bigcap}  & $\bigcup$    & \mintinline{latex}{\bigcup}   & $\bigsqcup$  & \mintinline{latex}{\bigsqcup}  \\
+    $\bigvee$    & \mintinline{latex}{\bigvee}  & $\bigwedge$  & \mintinline{latex}{\bigwedge} & -            & -                              \\
+  \end{tabular}
+\end{center}
+
+% -----------------------------------------------------------------------------
+\chapter{Fancy Additions}
+\minitoc\newpage
+
+\section{Comments}
+Comments can be activated and deactivated with the options packet in the file \lstinline{01-settings/metadata.tex}
+
+\begin{itemize}
+  \item \mintinline{latex}{\todo[author=tschinz]{Todo Comment with Authorname}} \todo[author=tschinz]{Todo Comment with Authorname}
+  \item \mintinline{latex}{\todo{Todo Comment}} \todo{Todo Comment}
+  \item \mintinline{latex}{\unsure{Unsure Comment}} \unsure{Unsure Comment}
+  \item \mintinline{latex}{\info{Info Comment}} \info{Info Comment}
+  \item \mintinline{latex}{\critical{Critical Comment}} \critical{Critical Comment}
+  \item \mintinline{latex}{\change{Change Comment}} \change{Change Comment}
+  \item \mintinline{latex}{\question{Question Comment}} \question{Question Comment}
+  \item \mintinline{latex}{\improvement{Improvement Comment}} \improvement{Improvement Comment}
+\end{itemize}
+
+\section{Boxes}
+The package awesomebox allows for some nice looking boxes.
+
+\begin{multicols}{2}
+  \notebox{Lorem Ipsum ...}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\notebox{Lorem Ipsum ...}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \tipbox{Lorem Ipsum ...}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\tipbox{Lorem Ipsum ...}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \warningbox{Lorem Ipsum ...}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\warningbox{Lorem Ipsum ...}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \cautionbox{Lorem Ipsum ...}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\cautionbox{Lorem Ipsum ...}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \importantbox{Lorem Ipsum ...}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\importantbox{Lorem Ipsum ...}
+  \end{minted}
+\end{multicols}
+
+\begin{multicols}{2}
+  \awesomebox[violet]{2pt}{\faRocket}{violet}{Lorem Ipsum ...}
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\awesomebox[violet]{2pt}{\faRocket}{violet}{Lorem Ipsum ...}
+  \end{minted}
+\end{multicols}
+
+\section{Package Pifont Special Characters}
+Insert with \mintinline{latex}{\ding{0}}
+\begin{center}
+  \begin{tabular}{l  c  c  c  c  c  c  c  c}
+    Index & 0        & 1          & 2          & 3          & 4          & 5          & 6          & 7 \\ \hline\hline
+    0   & \ding{0}   & \ding{1}   & \ding{2}   & \ding{3}   & \ding{4}   & \ding{5}   & \ding{6}   & \ding{7} \\
+    8   & \ding{8}   & \ding{9}   & \ding{10}  & \ding{11}  & \ding{12}  & \ding{13}  & \ding{14}  & \ding{15} \\
+    16  & \ding{16}  & \ding{17}  & \ding{18}  & \ding{19}  & \ding{20}  & \ding{21}  & \ding{22}  & \ding{23} \\
+    24  & \ding{24}  & \ding{25}  & \ding{26}  & \ding{27}  & \ding{28}  & \ding{29}  & \ding{30}  & \ding{31} \\
+    32  & \ding{32}  & \ding{33}  & \ding{34}  & \ding{35}  & \ding{36}  & \ding{37}  & \ding{38}  & \ding{39} \\
+    40  & \ding{40}  & \ding{41}  & \ding{42}  & \ding{43}  & \ding{44}  & \ding{45}  & \ding{46}  & \ding{47} \\
+    48  & \ding{48}  & \ding{49}  & \ding{50}  & \ding{51}  & \ding{52}  & \ding{53}  & \ding{54}  & \ding{55} \\
+    56  & \ding{56}  & \ding{57}  & \ding{58}  & \ding{59}  & \ding{60}  & \ding{61}  & \ding{62}  & \ding{63} \\
+    64  & \ding{64}  & \ding{65}  & \ding{66}  & \ding{67}  & \ding{68}  & \ding{69}  & \ding{70}  & \ding{71} \\
+    72  & \ding{72}  & \ding{73}  & \ding{74}  & \ding{75}  & \ding{76}  & \ding{77}  & \ding{78}  & \ding{79} \\
+    80  & \ding{80}  & \ding{81}  & \ding{82}  & \ding{83}  & \ding{84}  & \ding{85}  & \ding{86}  & \ding{87} \\
+    88  & \ding{88}  & \ding{89}  & \ding{90}  & \ding{91}  & \ding{92}  & \ding{93}  & \ding{94}  & \ding{95} \\
+    96  & \ding{96}  & \ding{97}  & \ding{98}  & \ding{99}  & \ding{100} & \ding{101} & \ding{102} & \ding{103} \\
+    104 & \ding{104} & \ding{105} & \ding{106} & \ding{107} & \ding{108} & \ding{109} & \ding{110} & \ding{111} \\
+    112 & \ding{112} & \ding{113} & \ding{114} & \ding{115} & \ding{116} & \ding{117} & \ding{118} & \ding{119} \\
+    120 & \ding{120} & \ding{121} & \ding{122} & \ding{123} & \ding{124} & \ding{125} & \ding{126} & \ding{127} \\
+    128 & \ding{128} & \ding{129} & \ding{130} & \ding{131} & \ding{132} & \ding{133} & \ding{134} & \ding{135} \\
+    136 & \ding{136} & \ding{137} & \ding{138} & \ding{139} & \ding{140} & \ding{141} & \ding{142} & \ding{143} \\
+    144 & \ding{144} & \ding{145} & \ding{146} & \ding{147} & \ding{148} & \ding{149} & \ding{150} & \ding{151} \\
+    152 & \ding{152} & \ding{153} & \ding{154} & \ding{155} & \ding{156} & \ding{157} & \ding{158} & \ding{159} \\
+    160 & \ding{160} & \ding{161} & \ding{162} & \ding{163} & \ding{164} & \ding{165} & \ding{166} & \ding{167} \\
+    168 & \ding{168} & \ding{169} & \ding{170} & \ding{171} & \ding{172} & \ding{173} & \ding{174} & \ding{175} \\
+    176 & \ding{176} & \ding{177} & \ding{178} & \ding{179} & \ding{180} & \ding{181} & \ding{182} & \ding{183} \\
+    184 & \ding{184} & \ding{185} & \ding{186} & \ding{187} & \ding{188} & \ding{189} & \ding{190} & \ding{191} \\
+    192 & \ding{192} & \ding{193} & \ding{194} & \ding{195} & \ding{196} & \ding{197} & \ding{198} & \ding{199} \\
+    200 & \ding{200} & \ding{201} & \ding{202} & \ding{203} & \ding{204} & \ding{205} & \ding{206} & \ding{207} \\
+    208 & \ding{208} & \ding{209} & \ding{210} & \ding{211} & \ding{212} & \ding{213} & \ding{214} & \ding{215} \\
+    216 & \ding{216} & \ding{217} & \ding{218} & \ding{219} & \ding{220} & \ding{221} & \ding{222} & \ding{223} \\
+    224 & \ding{224} & \ding{225} & \ding{226} & \ding{227} & \ding{228} & \ding{229} & \ding{230} & \ding{231} \\
+    232 & \ding{232} & \ding{233} & \ding{234} & \ding{235} & \ding{236} & \ding{237} & \ding{238} & \ding{239} \\
+    230 & \ding{240} & \ding{241} & \ding{242} & \ding{243} & \ding{244} & \ding{245} & \ding{246} & \ding{247} \\
+    248 & \ding{248} & \ding{249} & \ding{250} & \ding{251} & \ding{252} & \ding{253} & \ding{254} & \ding{255} \\
+  \end{tabular}
+\end{center}
+
+\section{Awesome Font}
+Symbols from \href{https://fontawesome.com/}{Awesomefont} can be added by \mintinline{latex}{\fa<IconName>}
+
+\begin{multicols}{2}
+  \faStar \\
+  \faPlusCircle \\
+  \faMinusCircle \\
+  \faCode \\
+  \faRocket \\
+  \vfill\null\columnbreak
+  \begin{minted}{latex}
+\faStar
+\faPlusCircle
+\faMinusCircle
+\faCode
+\faRocket
+  \end{minted}
+\end{multicols}
+
+% -----------------------------------------------------------------------------
+\chapter{References}
+\minitoc\newpage
+
+\section{Acronyms}
+\begin{center}
+  \begin{tabular}{l | l V{2.7} p{6cm} }
+    Latex Output  & Latex Code                         & Description \\ \hline \hline
+    \acrlong{ar}  & \mintinline{latex}{\acrlong{ar}}   & Displays the phrase which the acronyms stands for. Put the label of the acronym inside the braces. \\ \hline
+    \acrshort{ar} & \mintinline{latex}{\acrshort{ar}}  & Prints the acronym whose label is passed as parameter. \\ \hline
+    \acrfull{ar}  & \mintinline{latex}{\acrfull{ar}}   & Prints both, the acronym and its definition. \\
+  \end{tabular}
+\end{center}
+
+\section{Glossary}
+\begin{center}
+  \begin{tabular}{l | l V{2.7} p{8cm} }
+    Latex Output   & Latex Code & Description \\ \hline \hline
+    \gls{scrum}   & \mintinline{latex}{\gls{scrum}}    & To print the term, lowercase. For example, \gls{scrum} prints mathematics when used. \\ \hline
+    \Gls{scrum}   & \mintinline{latex}{\Gls{scrum}}    & The same as \gls but the first letter will be printed in uppercase. Example: \Gls{scrum} prints Mathematics \\ \hline
+    \glspl{scrum} & \mintinline{latex}{\glspl{scrum}}  & The same as \gls but the term is put in its plural form. For instance, \glspl{scrum} will write formulas in your final document. \\ \hline
+    \Glspl{scrum} & \mintinline{latex}{\Glspl{scrum}}  & The same as \Gls but the term is put in its plural form. For example, \Glspl{scrum} renders as Formulas. \\ \hline
+  \end{tabular}
+\end{center}
+
+\section{Bibliography}
+\begin{center}
+  \begin{tabular}{l | l V{2.7} p{4cm} }
+    Output                              & Code                                                    & Description \\ \hline \hline
+    \cite{stateoftheArt}                & \mintinline{latex}{\cite{stateoftheArt}}                & Default Citations \\
+    \cite[before][after]{stateoftheArt} & \mintinline{latex}{\cite[before][after]{stateoftheArt}} & Citation with additions before and after \\
+  \end{tabular}
+\end{center}
+
+% -----------------------------------------------------------------------------
+% Back matter
+% -----------------------------------------------------------------------------
+\backmatter
+
+% Bibliography
+\opt{bib}{
+  \newpage
+  \printbibliography[heading=bibintoc]
+}
+
+% Glossary
+\opt{acr}{
+  \newpage
+  \printglossary[type=\acronymtype]
+}
+\opt{glo}{
+  \printglossary
+}
+
+\end{document}
+

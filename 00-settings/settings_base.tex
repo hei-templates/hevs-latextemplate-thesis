@@ -1,0 +1,373 @@
+% ------------------------------------------------------------------------------
+% Template settings
+% ------------------------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% General tools
+%
+\usepackage{etoolbox}
+
+% ------------------------------------------------------------------------------
+% Page style
+%
+\usepackage[margin=3cm, left=3.5cm, right=3.5cm, twoside=true]{geometry}
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\pagestyle{fancy}
+
+% Standard pages (inside chapters)
+\fancyhf{}
+\usepackage{lastpage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[OR]{\bfseries \nouppercase{\rightmark}}
+\fancyhead[EL]{\bfseries \nouppercase{\leftmark}}
+\fancyfoot[EL,OR]{\thepage/\pageref{LastPage}}
+
+% First page of chapters
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+  \fancyfoot[EL,OR]{\thepage/\pageref{LastPage}}
+}
+
+% Imports for external PDFs
+\fancypagestyle{addpagenumbersforpdfimports}{
+  \fancyhead{}
+  \renewcommand{\headrulewidth}{0pt}
+  \fancyfoot{}
+  \fancyfoot[RO,LE]{\thepage/\pageref{LastPage}}
+}
+
+% Use empty style for page when clearing double pages
+\def\cleartoodd{%
+  \clearpage%
+  \ifodd\value{page}\else\mbox{}\thispagestyle{empty}\newpage\fi%
+}
+
+\def\clearchap{%
+  \ifodd\value{page}\else\mbox{}\thispagestyle{empty}\fi%
+}
+
+% \cleardoublepage replaced by \cleartoodd
+\let\origdoublepage\cleardoublepage
+\renewcommand{\cleardoublepage}{%
+  \cleartoodd%
+}
+
+% ------------------------------------------------------------------------------
+% Colors
+%
+\usepackage{xcolor}    % colors
+% HESSO VS Colors
+\definecolor{HEICyan}{HTML}{2699D4}
+\definecolor{HEIMagenta}{HTML}{C8306F}
+\definecolor{HEIYellow}{HTML}{E19A27}
+\definecolor{HEIGreen}{HTML}{238B56}
+
+% Smart Process Lab Colors
+\definecolor{SPLGreen}{RGB}{190, 214, 0}
+\definecolor{SPLBlue}{RGB}{0, 169, 224}
+\definecolor{SPLPurple}{HTML}{C8306F}
+
+% Standard Colors
+\definecolor{mGray80}{gray}{0.8}
+\definecolor{mGray60}{gray}{0.6}
+\definecolor{mGray40}{gray}{0.4}
+\definecolor{mGray20}{gray}{0.2}
+\definecolor{mWhite}{RGB}{255, 255, 255}
+\definecolor{mBlack}{RGB}{0, 0, 0}
+\definecolor{mPink}{cmyk}{0, 0.7808, 0.4429, 0.1412}
+
+% Document color accents
+\definecolor{coloraccent1}{HTML}{C8306F}
+\definecolor{coloraccent2}{HTML}{2699D4}
+\definecolor{coloraccent3}{HTML}{238B56}
+\definecolor{coloraccent4}{HTML}{E19A27}
+
+% Hyperlink colors
+\definecolor{linkColor}{HTML}{2C89A0}
+\definecolor{citeColor}{HTML}{2C89A0}
+\definecolor{fileColor}{HTML}{2C89A0}
+\definecolor{urlColor}{HTML}{2C89A0}
+\definecolor{linkColor}{HTML}{2C89A0}
+
+% Todo Colors
+\definecolor{todoColor}{RGB}{3, 169, 244}
+\definecolor{unsureColor}{RGB}{255, 165, 0}
+\definecolor{infoColor}{RGB}{139, 195, 74}
+\definecolor{criticalColor}{RGB}{211, 47, 47}
+\definecolor{changeColor}{RGB}{142, 68, 173}
+\definecolor{questionColor}{RGB}{156, 39, 176}
+\definecolor{improvementColor}{RGB}{230, 126, 34}
+
+% ------------------------------------------------------------------------------
+% Fonts
+%
+% Helvetica
+\usepackage{helvet} % helvetica
+\usepackage{pifont} % icon package <http://willbenton.com/wb-images/pifont.pdf>
+
+% ------------------------------------------------------------------------------
+% Special characters
+%
+\newcommand{\q}{\textnormal{\textquotesingle}}
+\newcommand{\ql}{\textnormal{\textquoteleft}}
+\newcommand{\qr}{\textnormal{\textquoteright}}
+\newcommand{\qq}{\textnormal{\textquotedblright}}
+\newcommand{\qql}{\textnormal{\textquotedblleft}}
+\newcommand{\qqr}{\textnormal{\textquotedblright}}
+
+% ------------------------------------------------------------------------------
+% Todo List
+% <https://tex.stackexchange.com/questions/247681/how-to-create-checkbox-todo-list>
+\usepackage{enumitem}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\setlist[itemize]{noitemsep, nolistsep}
+\setlist[enumerate]{noitemsep, nolistsep}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}} \hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+% Custom todo notes
+\usepackage{todonotes}
+\opt{cmt}{
+  \setuptodonotes{backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize}
+}
+\setuptodonotes{backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize,disable}
+%\usepackage[backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize,disable]{todonotes}
+\newcommand{\unsure}[1]{\todo[backgroundcolor=unsureColor!50,bordercolor=unsureColor!75,linecolor=unsureColor!75,size=\scriptsize]{#1}}
+\newcommand{\info}[1]{\todo[backgroundcolor=infoColor!50,bordercolor=infoColor!75,linecolor=infoColor!75,size=\scriptsize]{#1}}
+\newcommand{\critical}[1]{\todo[color=criticalColor!50,bordercolor=criticalColor!75,linecolor=criticalColor!75,size=\scriptsize]{#1}}
+\newcommand{\change}[1]{\todo[color=changeColor!50,bordercolor=changeColor!75,linecolor=changeColor!75,size=\scriptsize]{#1}}
+\newcommand{\question}[1]{\todo[color=questionColor!50,bordercolor=questionColor!75,linecolor=questionColor!75,size=\scriptsize]{#1}}
+\newcommand{\improvement}[1]{\todo[backgroundcolor=improvementColor!50,bordercolor=improvementColor!75,linecolor=improvementColor!75,size=\scriptsize]{#1}}
+
+% ------------------------------------------------------------------------------
+% Math
+%
+\usepackage{amsmath}  % better math
+\usepackage{amssymb}
+
+% ------------------------------------------------------------------------------
+% Floats and figures
+%
+\usepackage{newfloat}          % floats
+\usepackage[twoside]{caption}  % captions
+\usepackage{subcaption}        % subcaptions
+\usepackage[section]{placeins} % allows to put float barriers
+
+% Float captions in italics, with label in margin
+\DeclareCaptionLabelFormat{title}{#1 #2}
+\DeclareCaptionLabelFormat{hangout}{\llap{#1 #2\hspace{5mm}}}
+\captionsetup{
+  format=hang,
+  labelformat=hangout,
+  singlelinecheck=false,
+  font={it}
+}
+
+% ------------------------------------------------------------------------------
+% Tables
+%
+\usepackage{arydshln}  % dashed vertical and horizontal lines
+\usepackage{booktabs}  % Thick horizontal lines
+\usepackage{hhline}    % custom horizontal lines
+\usepackage{boldline}  % Bold tables lines
+\usepackage{multirow}  % vertically merged rows
+\usepackage{slashbox}  % topleft cell can be split
+\usepackage{longtable} % Table span across multiple pages
+\usepackage{array}     % manipulate array
+%\usepackage{tabularx}  % better tables
+
+% ------------------------------------------------------------------------------
+% Page Overlays
+%
+\usepackage{lineno}                      % Line numbering
+\opt{ln}{
+  \linenumbers
+}
+
+\opt{w}{
+  \usepackage{tikz}
+  \usepackage[printwatermark]{xwatermark}  % Watermark
+  \newcommand{\watermarkText}{Confidential \& Draft \& \Version}
+  \newcommand{\watermarkOpacity}{0.3}
+  \newcommand{\watermarkColor}{red}
+  \newsavebox\mybox
+  \savebox\mybox{\tikz[color=\watermarkColor,opacity=\watermarkOpacity]\node{\watermarkText};}
+  \newwatermark*[
+    allpages,
+    angle=45,
+    scale=4,
+    xpos=-20,
+    ypos=0
+  ]{\usebox\mybox}
+}
+
+% ------------------------------------------------------------------------------
+% Bibliography
+%
+\opt{bib}{
+  % Use biber, with numeric style and no sorting (citation order)
+  \usepackage[backend=biber,style=numeric,sorting=none,bibencoding=auto]{biblatex}
+  \addbibresource{03-tail/bibliography.bib}
+}
+
+% ------------------------------------------------------------------------------
+% Tables of contents, figures, tables and listings
+%
+\usepackage{tocloft}
+\newlistof{listing}{lol}{List of Listings}
+\setcounter{tocdepth}{1} % Depth to 'section'
+\setlength{\cftfigindent}{0pt}  % remove indentation from figures in lof
+\setlength{\cftfignumwidth}{1cm}
+\setlength{\cfttabindent}{0pt}  % remove indentation from tables in lot
+\setlength{\cfttabnumwidth}{1cm}
+\setlength{\cftlistingindent}{0pt}
+\setlength{\cftlistingnumwidth}{1cm}
+
+% ------------------------------------------------------------------------------
+% Mini tables of contents
+%
+\usepackage{minitoc}
+
+% no "Contents" title
+\mtcsettitle{minitoc}{Contents}
+
+% Layout
+\setlength{\mtcindent}{-0.5em}
+\mtcsetoffset{minitoc}{-1em}
+
+% Spacing above and below table
+\mtcsetfeature{minitoc}{before}{\vspace{0.5cm}}
+\mtcsetfeature{minitoc}{after}{\vspace{-0.25cm}}
+\renewcommand{\mtifont}{\sffamily\bfseries\large}
+
+% ------------------------------------------------------------------------------
+% Graphics
+%
+\usepackage[xetex]{graphicx} % graphics importing
+\graphicspath{
+  {02-main/figures/}
+  {04-resources/}
+}
+
+% ------------------------------------------------------------------------------
+% Code and syntax highlighting
+%
+\usepackage[newfloat]{minted}   % code highlighting
+\setminted{frame=single, framesep=6pt, breaklines=true, fontsize=\scriptsize}
+% all - manni, fruity, rrt, autumn, perldoc, bw, borland, emacs, colorful,
+% vim murphy, pastie, vs, friendly, trac, native, tango, monokai
+\newcommand{\codecolorscheme}{pastie}       % bright good for printing
+% \newcommand{\codecolorscheme}{monokai}    % dark good for viewing needs dark background
+% \newcommand{\codecolorscheme}{bw}         % black and white good with light gray background
+\newcommand{\codecolorschemebg}{gray!20}    % bright background good for printing
+% \newcommand{\codecolorschemebg}{gray!80}  % dark background bright good for viewing
+
+% ------------------------------------------------------------------------------
+% Typography
+%
+\usepackage{csquotes}                    % paragraph indentation and spacing
+\usepackage[defaultlines=3,all]{nowidow} % avoid widows and orphans
+%\usepackage{microtype}                   % typographic improvements
+\usepackage{parskip}                     % No indent and auto-space between paragraphs
+%\usepackage{fontspec}                    % To change fonts in XeTex
+\usepackage[super]{nth}
+
+\usepackage{paralist}
+\setlist{after=\vspace{\baselineskip}}
+
+% ------------------------------------------------------------------------------
+% Section and chapters headings
+%
+\usepackage[explicit]{titlesec} % titles formatting
+%\usepackage{titletoc} % titles formatting in ToC etc
+%\usepackage{sectsty}  % sectioning commands
+
+% -- Chapters --
+% Remove "Chapter N" and use a sans-serif font
+
+% Set layout lengths
+\setlength{\headheight}{8mm}
+\setlength{\footskip}{1.5cm}
+\addtolength{\textheight}{-.5cm}
+
+\titlespacing{\chapter}{-5mm}{-10mm}{3mm}
+\titlespacing{\section}{-5mm}{3mm}{2mm}
+\titlespacing{\subsection}{-5mm}{2mm}{2mm}
+\titlespacing{\subsubsection}{-5mm}{2mm}{2mm}
+
+%\titleformat{\chapter}[block]
+%{\Huge}
+%{\thechapter\hspace{12pt}\textcolor{gray80}{|}\hspace{12pt}}
+%{0pt}
+%{\Huge\bfseries}
+
+\titleformat{\chapter}{\Huge\bfseries}{\llap{\thechapter\hspace{12pt}\textcolor{mGray80}{|}}}{0mm}{%
+  \hfill\begin{minipage}[t]{\dimexpr\textwidth}\raggedright#1\end{minipage}%
+}
+\titleformat{\section}{\Large\bfseries}{\llap{\thesection}}{0mm}{%
+  \hfill\begin{minipage}[t]{\dimexpr\textwidth}\raggedright#1\end{minipage}%
+}
+\titleformat{\subsection}{\large \bfseries}{\llap{\thesubsection}}{0mm}{%
+  \hfill\begin{minipage}[t]{\dimexpr\textwidth}\raggedright#1\end{minipage}%
+}
+\titleformat{\subsubsection}{\bfseries}{\llap{\thesubsubsection}}{0mm}{%
+  \hfill\begin{minipage}[t]{\dimexpr\textwidth}\raggedright#1\end{minipage}%
+}
+
+% ------------------------------------------------------------------------------
+% Misc
+%
+\usepackage{lipsum}     % filler text
+\usepackage{blindtext}  % random text
+\usepackage{lscape}     % easy landscape pages
+\usepackage{pdflscape}  % landscape pages for PDFs
+\usepackage[final]{pdfpages} %
+\usepackage{nameref}    % name referencing
+\usepackage{awesomebox} % info, warning, tip Boxes
+\usepackage{multicol}   % multicols environment
+
+% ------------------------------------------------------------------------------
+% References
+%
+\usepackage{url}
+
+% pdf metadata
+\usepackage[
+  pdfauthor={\Author},
+  pdftitle={\ThesisTitle},
+  pdfsubject={\ThesisSubject},
+  pdfkeywords={\Keywords}
+  pdfduplex=DuplexFlipLongEdge]{hyperref}
+
+% Hyperlinks
+\hypersetup{
+  colorlinks=true,
+  linkcolor=linkColor,
+  citecolor=citeColor,
+  filecolor=fileColor,
+  urlcolor=urlColor,
+  pdfborder= 0.1 0.1 1
+}
+\opt{nlb}{
+    \hypersetup{pdfborder = 0 0 0} % remove colored border for links in pdf
+}
+
+% ------------------------------------------------------------------------------
+% Glossary
+%
+\opt{acr,glo}{
+  \usepackage[acronym,toc,section=chapter]{glossaries}
+  %\usepackage[xindy,toc]{glossaries}
+  \input{03-tail/glossary.tex}
+  \makeglossaries
+}
+\usepackage{amsmath}  % better math
+\usepackage{amssymb}
