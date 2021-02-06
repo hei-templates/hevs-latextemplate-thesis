@@ -34,7 +34,7 @@ ${GTTPDFFILE} : ${GTTTEXFILE}
 	@echo '+------------------------------------------------+'
 	@echo '| Build ${GTTTEXFILE}                               |'
 	@echo '+------------------------------------------------+'
-	#@make clean
+	@make clean
 
 ${PDFFILE} : ${TEXFILE} $(THESIS_OBJ)
 	@echo '+------------------------------------------------+'
@@ -49,7 +49,7 @@ ${PDFFILE} : ${TEXFILE} $(THESIS_OBJ)
 	@echo '+------------------------------------------------+'
 	@echo '| Build ${TEXFILE}                               |'
 	@echo '+------------------------------------------------+'
-	#@make clean
+	@make clean
 
 clean :
 	@rm *.aux || true

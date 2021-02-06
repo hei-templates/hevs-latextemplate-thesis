@@ -135,11 +135,10 @@
 
 % Custom todo notes
 \usepackage{todonotes}
+\setuptodonotes{backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize,disable}
 \opt{cmt}{
   \setuptodonotes{backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize}
 }
-\setuptodonotes{backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize,disable}
-%\usepackage[backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize,disable]{todonotes}
 \newcommand{\unsure}[1]{\todo[backgroundcolor=unsureColor!50,bordercolor=unsureColor!75,linecolor=unsureColor!75,size=\scriptsize]{#1}}
 \newcommand{\info}[1]{\todo[backgroundcolor=infoColor!50,bordercolor=infoColor!75,linecolor=infoColor!75,size=\scriptsize]{#1}}
 \newcommand{\critical}[1]{\todo[color=criticalColor!50,bordercolor=criticalColor!75,linecolor=criticalColor!75,size=\scriptsize]{#1}}
