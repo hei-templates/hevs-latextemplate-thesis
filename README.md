@@ -76,10 +76,8 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 
 ## Find us on
 [(Back to top)](#table-of-contents)
-<p align="center">
-  Webpage <a href="https://www.hevs.ch">hevs.ch</a> •
-  LinkedIn <a href="https://www.linkedin.com/groups/104343/">HES-SO Valais-Wallis</a> •
-  Youtube <a href="https://www.youtube.com/user/HESSOVS/">HES-SO Valais-Wallis</a> •
-  Twitter <a href="https://twitter.com/hessovalais">@hessovalais</a> •
-  Facebook <a href="https://www.facebook.com/hessovalais">@hessovalais</a>
-</p>
+* Webpage [hevs.ch](https://www.hevs.ch)
+* LinkedIn [HES-SO Valais-Wallis](https://www.linkedin.com/groups/104343/)
+* Youtube [HES-SO Valais-Wallis](https://www.youtube.com/user/HESSOVS/)
+* Twitter [@hessovalais](https://twitter.com/hessovalais)
+* Facebook [@hessovalais](https://www.facebook.com/hessovalais)
