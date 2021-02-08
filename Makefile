@@ -23,7 +23,7 @@ all : ${PDFFILE} ${GTTPDFFILE}
 
 ${GTTPDFFILE} : ${GTTTEXFILE}
 	@echo '+------------------------------------------------+'
-	@echo '| Build ${GTTTEXFILE}"                              |'
+	@echo '| Build ${GTTTEXFILE}                            |'
 	@echo '+------------------------------------------------+'
 	${TEX} ${GTTNAME}; true
 	${BIB} ${GTTNAME}; true
@@ -32,13 +32,13 @@ ${GTTPDFFILE} : ${GTTTEXFILE}
 	${TEX} ${GTTNAME}; true
 	${TEX} ${GTTNAME}; true
 	@echo '+------------------------------------------------+'
-	@echo '| Build ${GTTTEXFILE}                               |'
+	@echo '| Build ${GTTTEXFILE}                            |'
 	@echo '+------------------------------------------------+'
 	@make clean
 
 ${PDFFILE} : ${TEXFILE} $(THESIS_OBJ)
 	@echo '+------------------------------------------------+'
-	@echo '| Build ${TEXFILE}"                              |'
+	@echo '| Build ${TEXFILE}                               |'
 	@echo '+------------------------------------------------+'
 	${TEX} ${THESISNAME}; true
 	${BIB} ${THESISNAME}; true
@@ -52,6 +52,9 @@ ${PDFFILE} : ${TEXFILE} $(THESIS_OBJ)
 	@make clean
 
 clean :
+	@echo '+------------------------------------------------+'
+	@echo '| Clean                                          |'
+	@echo '+------------------------------------------------+'
 	@rm *.aux || true
 	@rm *.acn || true
 	@rm *.acr || true
@@ -100,6 +103,9 @@ clean :
 	@rm *.xml || true
 
 clean-pdf :
+	@echo '+------------------------------------------------+'
+	@echo '| Clean ${PDFFILE} & ${GTTPDFFILE}               |'
+	@echo '+------------------------------------------------+'
 	@rm ${PDFFILE} || true
 	@rm ${GTTPDFFILE} || true
 
