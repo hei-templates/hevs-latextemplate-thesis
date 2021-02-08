@@ -6,10 +6,9 @@
   <br>
 </h1>
 
+[![Read Template](https://img.shields.io/badge/Read-Template-blue)](https://github.com/tschinz/hevs-latextemplate-thesis/blob/master/thesis.pdf) [![Download Template](https://img.shields.io/badge/Download-Template-brightgreen)](https://github.com/tschinz/hevs-latextemplate-thesis/raw/master/thesis.pdf)
 
 A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
-
-Say goodbye to ugly and proprietary MS Word files!
 
 # Table of contents
 <p align="center">
@@ -39,25 +38,13 @@ Say goodbye to ugly and proprietary MS Word files!
 * Awesome tip boxes
 * Awesome font package
 * Todo notes package
-* Enable/Disable of
-  * Titlepage
-  * Preface
-  * Table of content
-  * Table of figures
-  * Table of tables
-  * Table of listings
-  * Appendices
-  * Glossary
-  * Acronyms
-  * Bibliography
-  * Watermark
-  * Linenumbers
-  * Comment
+* Optional package for enable/disable of
+  * Titlepage, Preface, Table of content, Table of figures, Table of tables, Table of listings, Appendices, Glossary, Acronyms, Bibliography, Watermark, Linenumbers, Comment
 
 ## Getting started
 [(Back to top)](#table-of-contents)
 
-1. Install MikTeX LaTeX Distribution
+1. Install [MiKTeX](https://miktex.org/) LaTeX Distribution
 1. Fork this repository
 2. Make sure that you have the required LaTeX packages (look into [`00-settings/settings_base.tex`](https://github.com/tschinz/hevs-latextemplate-thesis/blob/main/00-settings/settings_base.tex))
 3. Fill out the [`00-settings/metadata.tex`](https://github.com/tschinz/hevs-latextemplate-thesis/blob/main/00-settings/metadata.tex) with your thesis info
@@ -89,9 +76,10 @@ Say goodbye to ugly and proprietary MS Word files!
 
 ## Find us on
 [(Back to top)](#table-of-contents)
-
-> [hevs.ch](https://www.hevs.ch) &nbsp;&middot;&nbsp;
-> LinkedIn [HES-SO Valais-Wallis](https://www.linkedin.com/groups/104343/) &nbsp;&middot;&nbsp;
-> Youtube [HES-SO Valais-Wallis](https://www.youtube.com/user/HESSOVS)
-> Twitter [@hessovalais](https://twitter.com/hessovalais) &nbsp;&middot;&nbsp;
-> Facebook [@hessovalais](https://www.facebook.com/hessovalais) &nbsp;&middot;&nbsp;
+<p align="center">
+  Webpage <a href="https://www.hevs.ch">hevs.ch</a> •
+  LinkedIn <a href="https://www.linkedin.com/groups/104343/">HES-SO Valais-Wallis</a> •
+  Youtube <a href="https://www.youtube.com/user/HESSOVS/">HES-SO Valais-Wallis</a> •
+  Twitter <a href="https://twitter.com/hessovalais">@hessovalais</a> •
+  Facebook <a href="https://www.facebook.com/hessovalais">@hessovalais</a>
+</p>
