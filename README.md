@@ -44,15 +44,88 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 ## Getting started
 [(Back to top)](#table-of-contents)
 
-1. Install [MiKTeX](https://miktex.org/) LaTeX Distribution
-1. Fork this repository
-2. Make sure that you have the required LaTeX packages (look into [`00-settings/settings_base.tex`](https://github.com/tschinz/hevs-latextemplate-thesis/blob/main/00-settings/settings_base.tex))
-3. Fill out the [`00-settings/metadata.tex`](https://github.com/tschinz/hevs-latextemplate-thesis/blob/main/00-settings/metadata.tex) with your thesis info
-4. Write your thesis
-5. Use the given Makefile or your favorite IDE to build the PDF
-  * ``make thesis``
-  * ``make clean``
+### Installation
 
+#### Windows
+
+* Install [miniconda](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe)
+
+* Install [MikTex](https://miktex.org/download)
+
+* Install [make](http://gnuwin32.sourceforge.net/packages/make.htm)
+
+* Install [cmder](https://github.com/cmderdev/cmder/releases/latest) (for git)
+
+* Open cmder and clone repo as well as create conda environment
+
+  ```bash
+  mkdir -p c:/work
+  cd c:/work
+  git clone https://github.com/tschinz/hevs-latextemplate-thesis.git
+  cd hevs-latextemplate-thesis
+  conda env create -f condaenv-win.yml
+  ```
+
+#### Linux
+
+* Install base requirements
+
+  ```bash
+  sudo apt install git make
+  ```
+
+* Install [miniconda](https://docs.conda.io/en/latest/miniconda.html)
+
+  ```bash
+  # install miniconda
+  mkdir -p ~/miniconda3
+  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+  bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+  rm -rf ~/miniconda3/miniconda.sh
+  # if you have bash
+  ~/miniconda3/bin/conda init bash
+  # if you have zsh
+  ~/miniconda3/bin/conda init zsh
+  ```
+
+* Install [MikTex](https://miktex.org/download) (check for your ubuntu release)
+
+  ```bash
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D6BC243565B2087BC3F897C9277A7293F59E4889
+  echo "deb http://miktex.org/download/ubuntu focal universe" | sudo tee /etc/apt/sources.list.d/miktex.list
+  sudo apt-get update
+  sudo apt-get install miktex
+  # open miktex console gui as admin (or via applications menu)
+  sudo miktexsetup 
+  ```
+
+* Install python environment
+
+  ```bash
+  # clone repo
+  mkdir -p ~/work
+  cd ~/work
+  git clone https://github.com/tschinz/hevs-latextemplate-thesis.git
+  # install conda env environment
+  cd hevs-latextemplate-thesis
+  conda env create -f condaenv-linux.yml
+  ```
+
+### How to use
+
+1. Write your thesis
+
+2. Use the given Makefile or your favorite IDE to build the PDF
+
+   ```bash
+   make help   # for more information
+   make thesis # builds your thesis
+   make clean  # cleans intermediate files
+   ```
+
+   During the first build, MixTex will install all required packages. Press ``install`` on all popups, or deselect the checkbox ``Always show this dialog`` on the bottom.
+
+   ![miktex-package-install](04-resources/miktex-package-install.png)
 ## Contributing
 [(Back to top)](#table-of-contents)
 
@@ -70,7 +143,7 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 ## Credits
 [(Back to top)](#table-of-contents)
 
-* Marc Demierre, for the EPFL extension
+* Marc Demierre, for the extensions
 * Loïc Monney, for the section title style, captions style and font idea
 * EPFL, for the basic structure
 
