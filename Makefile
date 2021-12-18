@@ -1,12 +1,19 @@
-.PHONY: thesis all clean clean_all
+.PHONY: info conda-create conda-export clean view help thesis all clean clean_all
+
+###########################################################################
+# Detect OS                                                               #
+###########################################################################
+ifeq ($(OS),Windows_NT)
+detected_OS := Windows
+else
+detected_OS := $(shell uname)
+endif
 
 ###########################################################################
 # GLOBALS                                                                 #
 ###########################################################################
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PYTHON_INTERPRETER = python
-CONDA_ENV_WIN_FILE = condaenv-win.yml
-CONDA_ENV_LINUX_FILE = condaenv-linux.yml
 CONDA_ENV_NAME = latex-env
 
 #TEX = pdflatex -shell-escape -interaction=nonstopmode -file-line-error
@@ -23,38 +30,80 @@ GTTPDFFILE = ${GTTNAME}.pdf
 GTTBCFFILE = ${GTTNAME}.bcf
 THESIS_OBJ = $(wildcard 00-settings/*.tex) $(wildcard 01-head/*.tex) $(wildcard 02-main/*.tex) $(wildcard 03-tail/*.tex)
 
+###########################################################################
+# OS Specifics                                                            #
+###########################################################################
+ifeq ($(detected_OS),Windows)
+	PDFVIEWER = 'start "" /max'
+	CONDA_ENV_FILE = condaenv-win.yml
 ifeq (,$(shell where conda))
-HAS_CONDA=False
+	HAS_CONDA = False
 else
-HAS_CONDA=True
-SEARCH_ENV=$(shell conda.bat info --envs | grep $(CONDA_ENV_NAME))
-FOUND_ENV_NAME = $(word 1, $(notdir $(SEARCH_ENV)))
-# check if conda environment is active
+	HAS_CONDA = True
+	SEARCH_ENV = $(shell conda.bat info --envs | grep $(CONDA_ENV_NAME))
+	FOUND_ENV_NAME = $(word 1, $(notdir $(SEARCH_ENV)))
+	# check if conda environment is active
 ifneq ($(CONDA_DEFAULT_ENV),$(FOUND_ENV_NAME))
 	CONDA_ACTIVATE := source $$(conda.bat info --base)/etc/profile.d/conda.sh ; conda activate $(CONDA_ENV_NAME)
 else
-    CONDA_ACTIVATE := true
+	CONDA_ACTIVATE := true
+endif
+endif
+endif
+
+ifeq ($(detected_OS),Darwin)
+	PDFVIEWER = open
+	CONDA_ENV_FILE = condaenv-mac-arm64.yml
+ifeq (,$(shell which conda))
+	HAS_CONDA = False
+else
+	HAS_CONDA = True
+	ENV_DIR = $(shell conda info --base)
+	MY_ENV_DIR = $(ENV_DIR)/envs/$(CONDA_ENV_NAME)
+	CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate $(CONDA_ENV_NAME)
+endif
+endif
+
+ifeq ($(detected_OS),Linux)
+	PDFVIEWER = xdg-open
+	CONDA_ENV_FILE = condaenv-linux.yml
+ifeq (,$(shell which conda))
+	HAS_CONDA = False
+else
+	HAS_CONDA = True
+	ENV_DIR = $(shell conda info --base)
+	MY_ENV_DIR = $(ENV_DIR)/envs/$(CONDA_ENV_NAME)
+	CONDA_ACTIVATE = source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate $(CONDA_ENV_NAME)
 endif
 endif
 
 ###########################################################################
 # COMMANDS                                                                #
 ###########################################################################
+info: ## Information about the environemnt
+	@echo "Environment Informations"
+	@echo "  * Detected OS: $(detected_OS)"
+	@echo "  * Pdfviewer: $(PDFVIEWER)"
+	@echo "  * Conda found: $(HAS_CONDA)"
+	@echo "  * Conda envfile: $(CONDA_ENV_FILE)"
+	@echo "  * Conda dir: $(ENV_DIR)"
+	@echo "  * Conda envdir: $(MY_ENV_DIR)"
 
-conda-create-win: ## Install conda environment for windows
-	@conda env create -f $(CONDA_ENV_WIN_FILE)
-	@echo ">>> Conda environment '$(CONDA_ENV_NAME)' create."
+conda-create: ## Install conda environment
+ifeq (True,$(HAS_CONDA))
+ifneq ("$(wildcard $(MY_ENV_DIR))","") # check if the directory is there
+	@echo ">>> Found $(CONDA_ENV_NAME) environment in $(MY_ENV_DIR). Skipping installation..."
+else
+	@echo ">>> Detected conda, but $(CONDA_ENV_NAME) is missing in $(ENV_DIR). Installing ..."
+	@conda env create -f $(CONDA_ENV_FILE) -n $(CONDA_ENV_NAME)
+endif
+else
+	@echo ">>> Install conda first."
+	exit
+endif
 
-conda-export-win: ## export conda environment for windows
-	@conda env export > $(CONDA_ENV_WIN_FILE)
-	@echo ">>> Conda environment '$(CONDA_ENV_NAME)' exported."
-
-conda-create-linux: ## Install conda environment for linux
-	@conda env create -f $(CONDA_ENV_LINUX_FILE)
-	@echo ">>> Conda environment '$(CONDA_ENV_NAME)' create."
-
-conda-export-linux: ## export conda environment for linux
-	@conda env export > $(CONDA_ENV_LINUX_FILE)
+conda-export: ## export conda environment
+	@conda env export > $(CONDA_ENV_FILE)
 	@echo ">>> Conda environment '$(CONDA_ENV_NAME)' exported."
 
 thesis: ${PDFFILE} $(THESIS_OBJ) ## Generate thesis

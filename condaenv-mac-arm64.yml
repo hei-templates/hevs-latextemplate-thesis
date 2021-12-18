@@ -1,0 +1,24 @@
+name: latex-env
+channels:
+  - defaults
+dependencies:
+  - bzip2=1.0.8=h620ffc9_4
+  - ca-certificates=2021.10.26=hca03da5_2
+  - libcxx=12.0.0=hf6beb65_1
+  - libffi=3.4.2=hc377ac9_2
+  - ncurses=6.3=h1a28f6b_2
+  - openssl=1.1.1j=h1230e6a_0
+  - pygments=2.10.0=pyhd3eb1b0_0
+  - python=3.10.0=hbdb9e5c_3
+  - readline=8.1=h1a28f6b_0
+  - sqlite=3.36.0=h1058600_0
+  - tk=8.6.11=hb8d0fd4_0
+  - tzdata=2021e=hda174b7_0
+  - wheel=0.37.0=pyhd3eb1b0_1
+  - xz=5.2.5=h1a28f6b_0
+  - zlib=1.2.11=hca03da5_3
+  - pip:
+    - certifi==2021.5.30
+    - pip==21.2.4
+    - setuptools==58.0.4
+prefix: /Users/zas/miniconda3/envs/latex-env

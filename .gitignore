@@ -1,3 +1,5 @@
+# Ignore Mac OS Finder files
+*.DS_Store
 # Latex intermediary files
 *.acn
 *.acr
