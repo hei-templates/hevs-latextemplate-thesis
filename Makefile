@@ -1,4 +1,4 @@
-.PHONY: info conda-create conda-export clean view help thesis all clean clean_all
+.PHONY: info conda-create conda-export clean view help thesis all clean clean_all gtt thesis all
 
 ###########################################################################
 # Detect OS                                                               #

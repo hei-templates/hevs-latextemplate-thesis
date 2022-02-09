@@ -28,48 +28,50 @@
 % Preamble
 % -----------------------------------------------------------------------------
 %\input{00-settings/metadata.tex}         % your project data
-% Custom metadata
-% ------------------------------------------------------------------------------
-
-% Thesis info
-\newcommand{\ThesisTitle}{Guide to Thesis}
-\newcommand{\ThesisSubject}{How to use \latex for your thesis}
-\newcommand{\Orientation}{Systems Engineering}
-\newcommand{\Major}{Infotronics}
-\newcommand{\Year}{2021}
-\newcommand{\Version}{v1.0}
-\newcommand{\SubmissionDate}{\today}
-
-% Author
-\newcommand{\AuthorFirstName}{Silvan}
-\newcommand{\AuthorLastName}{Zahno}
-\newcommand{\AuthorEmail}{silvan.zahno@hevs.ch}
-\newcommand{\Author}{\AuthorFirstName\,\AuthorLastName}
-
-% Advisor
-\newcommand{\AdvisorFirstName}{Silvan}
-\newcommand{\AdvisorLastName}{Zahno}
-\newcommand{\Advisor}{\AdvisorFirstName\,\AdvisorLastName}
-
-% Main expert
-\newcommand{\ExpertFirstName}{Pierre}
-\newcommand{\ExpertLastName}{Pompili}
-\newcommand{\Expert}{\ExpertFirstName\,\ExpertLastName}
-
-% University
-\newcommand{\University}{HES-SO//Valais Wallis}
-
-% Location & Current Date
-\newcommand{\Date}{\today}
-\newcommand{\Place}{Sion}
-\newcommand{\Country}{Switzerland}
 
 % ------------------------------------------------------------------------------
 % Page Content
 \usepackage[tp, toc, tof, apd, glo, acr, bib]{optional} % only optionals for final thesis active
 
+\input{00-settings/metadata.tex}         % your project data
 \input{00-settings/settings_base.tex}    % template settings
 \input{00-settings/settings_custom.tex}  % your custom packages etc
+
+% Custom metadata
+% ------------------------------------------------------------------------------
+
+% Thesis info
+\renewcommand{\ThesisTitle}{Guide to Thesis}
+\renewcommand{\ThesisSubject}{How to use \latex for your thesis}
+\renewcommand{\Orientation}{Systems Engineering}
+\renewcommand{\Major}{Infotronics}
+\renewcommand{\Year}{2021}
+\renewcommand{\Version}{v1.0}
+\renewcommand{\SubmissionDate}{\today}
+
+% Author
+\renewcommand{\AuthorFirstName}{Silvan}
+\renewcommand{\AuthorLastName}{Zahno}
+\renewcommand{\AuthorEmail}{silvan.zahno@hevs.ch}
+\renewcommand{\Author}{\AuthorFirstName\,\AuthorLastName}
+
+% Advisor
+\renewcommand{\AdvisorFirstName}{Silvan}
+\renewcommand{\AdvisorLastName}{Zahno}
+\renewcommand{\Advisor}{\AdvisorFirstName\,\AdvisorLastName}
+
+% Main expert
+\renewcommand{\ExpertFirstName}{Pierre}
+\renewcommand{\ExpertLastName}{Pompili}
+\renewcommand{\Expert}{\ExpertFirstName\,\ExpertLastName}
+
+% University
+\renewcommand{\University}{HES-SO//Valais Wallis}
+
+% Location & Current Date
+\renewcommand{\Date}{\today}
+\renewcommand{\Place}{Sion}
+\renewcommand{\Country}{Switzerland}
 
 \begin{document}
 % -----------------------------------------------------------------------------

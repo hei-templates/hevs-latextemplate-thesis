@@ -111,6 +111,41 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
   conda env create -f condaenv-linux.yml
   ```
 
+#### Mac
+
+* Install base requirements
+
+  ```bash
+  # Install brew
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew install git make cask
+
+  ```
+
+* Install [miniconda](https://docs.conda.io/en/latest/miniconda.html)
+
+  ```bash
+  brew install --cask miniconda
+  # if you have bash
+  ~/miniconda3/bin/conda init bash
+  # if you have zsh
+  ~/miniconda3/bin/conda init zsh
+  ```
+
+* Install [MikTex](https://miktex.org/download) (check for macos release)
+
+* Install python environment
+
+  ```bash
+  # clone repo
+  mkdir -p ~/work
+  cd ~/work
+  git clone https://github.com/tschinz/hevs-latextemplate-thesis.git
+  # install conda env environment
+  cd hevs-latextemplate-thesis
+  conda env create -f  condaenv-mac-arm64.yml
+  ```
+
 ### How to use
 
 1. Write your thesis
