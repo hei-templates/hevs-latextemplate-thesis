@@ -110,7 +110,7 @@ thesis: ${PDFFILE} $(THESIS_OBJ) ## Generate thesis
 
 gtt: ${GTTPDFFILE} ## Generate guide-to-thesis
 
-all: ${PDFFILE} ${GTTPDFFILE} ## Generate all tex files
+all: ${PDFFILE} ${GTTPDFFILE} ## Generate all pdf files
 
 ${GTTPDFFILE}: ${GTTTEXFILE}
 	@$(CONDA_ACTIVATE)
