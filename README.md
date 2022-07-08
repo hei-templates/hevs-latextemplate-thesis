@@ -10,6 +10,9 @@
 
 A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 
+> **Warning**
+> Disclaimer, this is an unofficial latex template not supported by the HEI-Vs. Use at your own risk, no support is provided for installation or use. You have been warned.
+
 # Table of contents
 <p align="center">
   <a href="#features">Features</a> •
