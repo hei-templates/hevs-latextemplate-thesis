@@ -114,6 +114,18 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
   conda env create -f condaenv-linux.yml
   ```
 
+* Open Makefile with your favorite editor
+  `nano ~/work/hevs-latextemplate-thesis/Makefile`
+
+* Comment and uncomment lines to set your shell
+  ```
+  ifeq ($(detected_OS),Linux)
+	#SHELL = /bin/zsh
+	SHELL = /bin/bash
+	PDFVIEWER = xdg-open
+	CONDA_ENV_FILE = condaenv-linux.yml
+  ```
+
 #### Mac
 
 * Install base requirements
@@ -158,6 +170,7 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
    ```bash
    make help   # for more information
    make thesis # builds your thesis
+   sudo make thesis # if you setted up miktex as admin in linux
    make clean  # cleans intermediate files
    ```
 
