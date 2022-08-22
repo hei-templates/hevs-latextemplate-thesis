@@ -115,7 +115,13 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
   ```
 
 * Open Makefile with your favorite editor
-  `nano ~/work/hevs-latextemplate-thesis/Makefile`
+  ```bash
+  vim ~/work/hevs-latextemplate-thesis/Makefile
+  ```
+  or
+  ```bash
+  nano ~/work/hevs-latextemplate-thesis/Makefile
+  ```
 
 * Comment and uncomment lines to set your shell
   ```
