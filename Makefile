@@ -65,6 +65,8 @@ endif
 endif
 
 ifeq ($(detected_OS),Linux)
+	#SHELL = /bin/zsh
+	SHELL = /bin/bash
 	PDFVIEWER = xdg-open
 	CONDA_ENV_FILE = condaenv-linux.yml
 ifeq (,$(shell which conda))
