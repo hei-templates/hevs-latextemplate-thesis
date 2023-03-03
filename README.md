@@ -51,11 +51,13 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 
 #### Windows
 
-* Install [miniconda](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe)
+* Install [miniconda](https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe) as **Just Me** and add to path: **C:\Users\my_account\AppData\Local\miniconda3\condabin**
 
 * Install [MikTex](https://miktex.org/download)
 
 * Install [make](http://gnuwin32.sourceforge.net/packages/make.htm)
+
+* Install [perl](https://strawberryperl.com/releases.html) (for acronyms and glossaries support)
 
 * Install [cmder](https://github.com/cmderdev/cmder/releases/latest) (for git)
 
