@@ -9,16 +9,17 @@
   & \AuthorDegree\,Student \\
   & \University \\
   & \Country \\
-  Email: & \email{\AuthorEmail}
+  Email: & \href{mailto:\AuthorEmail}{\AuthorEmail}
 \end{tabular}
 
 \vspace{1 cm}
 
 \textbf{Declaration of honor}
 
+I, undersigned, \Author, hereby declare that the work submitted is the result of a personal work. I certify that I have not resorted to plagiarism or other forms of fraud. All sources of information used and the author quotes were clearly mentioned.
+
 {\renewcommand{\arraystretch}{2}
-\begin{tabular}{p{2.5cm} p{11cm}}
-  & I, undersigned, \Author, hereby declare that the work submitted is the result of a personal work. I certify that I have not resorted to plagiarism or other forms of fraud. All sources of information used and the author quotes were clearly mentioned. \\
+\begin{tabular}{l l}
   Place, date: & \today \\
   Signature: & \underline{\hspace{7cm}}\hspace{-5.5cm}\includegraphics[width=0.15\textwidth]{signature.png}
   % if you want to sign by hand on a line use the following two lines
@@ -28,27 +29,3 @@
 }
 
 \vspace{\fill}
-
-% Not used anymore since 2021
-%\textbf{Validation}
-%
-%Accepted by the \University \, (\Country, \Place) on a proposal from:
-%
-%\vspace{0.5cm}
-%
-%\Advisor, Thesis project advisor
-%
-%\Expert, \ExpertLab, Main expert
-%
-%\vspace{1cm}
-%
-%Place, date: \underline{\hspace{8cm}}
-%
-%\vspace{3cm}
-%
-%{ \renewcommand{\arraystretch}{1.5}
-%\begin{tabular}{p{5cm} p{7cm}}
-%  \Advisor  & \Dean\\
-%  Advisor   & Dean, HEI-VS//Systems Engineering\\
-%\end{tabular}
-%}

@@ -14,6 +14,7 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 > Disclaimer, this is an unofficial latex template not supported by the HEI-Vs. Use at your own risk, no support is provided for installation or use. You have been warned.
 
 # Table of contents
+
 <p align="center">
   <a href="#features">Features</a> •
   <a href="#getting-started">Getting started</a> •
@@ -23,6 +24,7 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 </p>
 
 ## Features
+
 [(Back to top)](#table-of-contents)
 
 * Title page with official layout
@@ -42,9 +44,10 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 * Awesome font package
 * Todo notes package
 * Optional package for enable/disable of
-  * Titlepage, Preface, Table of content, Table of figures, Table of tables, Table of listings, Appendices, Glossary, Acronyms, Bibliography, Watermark, Linenumbers, Comment
+   * Titlepage, Preface, Table of content, Table of figures, Table of tables, Table of listings, Appendices, Glossary, Acronyms, Bibliography, Watermark, Linenumbers, Comment
 
 ## Getting started
+
 [(Back to top)](#table-of-contents)
 
 ### Installation
@@ -62,7 +65,7 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 * Install [cmder](https://github.com/cmderdev/cmder/releases/latest) (for git)
 
 * Open cmder and clone repo as well as create conda environment
-
+  
   ```bash
   mkdir -p c:/work
   cd c:/work
@@ -74,13 +77,13 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 #### Linux
 
 * Install base requirements
-
+  
   ```bash
   sudo apt install git make
   ```
 
 * Install [miniconda](https://docs.conda.io/en/latest/miniconda.html)
-
+  
   ```bash
   # install miniconda
   mkdir -p ~/miniconda3
@@ -94,7 +97,7 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
   ```
 
 * Install [MikTex](https://miktex.org/download) (check for your ubuntu release)
-
+  
   ```bash
   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D6BC243565B2087BC3F897C9277A7293F59E4889
   echo "deb http://miktex.org/download/ubuntu focal universe" | sudo tee /etc/apt/sources.list.d/miktex.list
@@ -105,7 +108,7 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
   ```
 
 * Install python environment
-
+  
   ```bash
   # clone repo
   mkdir -p ~/work
@@ -117,36 +120,39 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
   ```
 
 * Open Makefile with your favorite editor
+  
   ```bash
   vim ~/work/hevs-latextemplate-thesis/Makefile
   ```
+  
   or
+  
   ```bash
   nano ~/work/hevs-latextemplate-thesis/Makefile
   ```
 
 * Comment and uncomment lines to set your shell
+  
   ```
   ifeq ($(detected_OS),Linux)
-	#SHELL = /bin/zsh
-	SHELL = /bin/bash
-	PDFVIEWER = xdg-open
-	CONDA_ENV_FILE = condaenv-linux.yml
+    #SHELL = /bin/zsh
+    SHELL = /bin/bash
+    PDFVIEWER = xdg-open
+    CONDA_ENV_FILE = condaenv-linux.yml
   ```
 
 #### Mac
 
 * Install base requirements
-
+  
   ```bash
   # Install brew
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install git make cask
-
   ```
 
 * Install [miniconda](https://docs.conda.io/en/latest/miniconda.html)
-
+  
   ```bash
   brew install --cask miniconda
   # if you have bash
@@ -158,7 +164,7 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 * Install [MikTex](https://miktex.org/download) (check for macos release)
 
 * Install python environment
-
+  
   ```bash
   # clone repo
   mkdir -p ~/work
@@ -174,32 +180,40 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 1. Write your thesis
 
 2. Use the given Makefile or your favorite IDE to build the PDF
-
+   
    ```bash
    make help   # for more information
    make thesis # builds your thesis
    sudo make thesis # if you setted up miktex as admin in linux
    make clean  # cleans intermediate files
    ```
-
+   
    During the first build, MixTex will install all required packages. Press ``install`` on all popups, or deselect the checkbox ``Always show this dialog`` on the bottom.
-
+   
    ![miktex-package-install](04-resources/miktex-package-install.png)
-## Contributing
-[(Back to top)](#table-of-contents)
+   
+   ## Contributing
+   
+   [(Back to top)](#table-of-contents)
 
-1. Take a look at the [issues](https://github.com/tschinz/hevs-latextemplate-thesis/issues) issues with the "Help wanted" tag
-2. Choose something or open a new [issue](https://github.com/tschinz/hevs-latextemplate-thesis/issues)
-3. Fork the repo, fix the problem in a branch
-4. Rebase your branch if needed
-5. Submit a [pull request](https://github.com/tschinz/hevs-latextemplate-thesis/pulls)
+3. Take a look at the [issues](https://github.com/tschinz/hevs-latextemplate-thesis/issues) issues with the "Help wanted" tag
+
+4. Choose something or open a new [issue](https://github.com/tschinz/hevs-latextemplate-thesis/issues)
+
+5. Fork the repo, fix the problem in a branch
+
+6. Rebase your branch if needed
+
+7. Submit a [pull request](https://github.com/tschinz/hevs-latextemplate-thesis/pulls)
 
 ## Help
+
 [(Back to top)](#table-of-contents)
 
 [![Read Guide to Thesis](https://img.shields.io/badge/Read-Guide_to_Thesis-blue)](https://github.com/tschinz/hevs-latextemplate-thesis/blob/master/guide-to-thesis.pdf) [![Download Guide to LaTeX](https://img.shields.io/badge/Download-Guide_to_Thesis-brightgreen)](https://github.com/tschinz/hevs-latextemplate-thesis/raw/master/guide-to-thesis.pdf)
 
 ## Credits
+
 [(Back to top)](#table-of-contents)
 
 * Marc Demierre, for the extensions
@@ -207,7 +221,9 @@ A LaTeX template for the HES-SO//Valais Wallis Bachelor thesis.
 * EPFL, for the basic structure
 
 ## Find us on
+
 [(Back to top)](#table-of-contents)
+
 * Webpage [hevs.ch](https://www.hevs.ch)
 * LinkedIn [HES-SO Valais-Wallis](https://www.linkedin.com/groups/104343/)
 * Youtube [HES-SO Valais-Wallis](https://www.youtube.com/user/HESSOVS/)
