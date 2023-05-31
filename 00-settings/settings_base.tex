@@ -124,27 +124,27 @@
 % Todo List
 % <https://tex.stackexchange.com/questions/247681/how-to-create-checkbox-todo-list>
 \usepackage{enumitem}
-\newlist{todolist}{itemize}{2}
-\setlist[todolist]{label=$\square$}
-\setlist[itemize]{noitemsep, nolistsep}
-\setlist[enumerate]{noitemsep, nolistsep}
-\newcommand{\cmark}{\ding{51}}
-\newcommand{\xmark}{\ding{55}}
-\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}} \hspace{-2.5pt}}
-\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+%\newlist{todolist}{itemize}{2}
+%\setlist[todolist]{label=$\square$}
+%\setlist[itemize]{noitemsep, nolistsep}
+%\setlist[enumerate]{noitemsep, nolistsep}
+%\newcommand{\cmark}{\ding{51}}
+%\newcommand{\xmark}{\ding{55}}
+%\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}} \hspace{-2.5pt}}
+%\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
 
 % Custom todo notes
-\usepackage{todonotes}
-\setuptodonotes{backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize,disable}
-\opt{cmt}{
-  \setuptodonotes{backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize}
-}
-\newcommand{\unsure}[1]{\todo[backgroundcolor=unsureColor!50,bordercolor=unsureColor!75,linecolor=unsureColor!75,size=\scriptsize]{#1}}
-\newcommand{\info}[1]{\todo[backgroundcolor=infoColor!50,bordercolor=infoColor!75,linecolor=infoColor!75,size=\scriptsize]{#1}}
-\newcommand{\critical}[1]{\todo[color=criticalColor!50,bordercolor=criticalColor!75,linecolor=criticalColor!75,size=\scriptsize]{#1}}
-\newcommand{\change}[1]{\todo[color=changeColor!50,bordercolor=changeColor!75,linecolor=changeColor!75,size=\scriptsize]{#1}}
-\newcommand{\question}[1]{\todo[color=questionColor!50,bordercolor=questionColor!75,linecolor=questionColor!75,size=\scriptsize]{#1}}
-\newcommand{\improvement}[1]{\todo[backgroundcolor=improvementColor!50,bordercolor=improvementColor!75,linecolor=improvementColor!75,size=\scriptsize]{#1}}
+%\usepackage{todonotes}
+%\setuptodonotes{backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize,disable}
+%\opt{cmt}{
+%  \setuptodonotes{backgroundcolor=todoColor!50,bordercolor=todoColor!75,linecolor=todoColor!75,size=\scriptsize}
+%}
+%\newcommand{\unsure}[1]{\todo[backgroundcolor=unsureColor!50,bordercolor=unsureColor!75,linecolor=unsureColor!75,size=\scriptsize]{#1}}
+%\newcommand{\info}[1]{\todo[backgroundcolor=infoColor!50,bordercolor=infoColor!75,linecolor=infoColor!75,size=\scriptsize]{#1}}
+%\newcommand{\critical}[1]{\todo[color=criticalColor!50,bordercolor=criticalColor!75,linecolor=criticalColor!75,size=\scriptsize]{#1}}
+%\newcommand{\change}[1]{\todo[color=changeColor!50,bordercolor=changeColor!75,linecolor=changeColor!75,size=\scriptsize]{#1}}
+%\newcommand{\question}[1]{\todo[color=questionColor!50,bordercolor=questionColor!75,linecolor=questionColor!75,size=\scriptsize]{#1}}
+%\newcommand{\improvement}[1]{\todo[backgroundcolor=improvementColor!50,bordercolor=improvementColor!75,linecolor=improvementColor!75,size=\scriptsize]{#1}}
 
 % ------------------------------------------------------------------------------
 % Math
@@ -278,8 +278,8 @@
 %\usepackage{fontspec}                    % To change fonts in XeTex
 \usepackage[super]{nth}
 
-\usepackage{paralist}
-\setlist{after=\vspace{\baselineskip}}
+%\usepackage{paralist}
+%\setlist{after=\vspace{\baselineskip}}
 
 % ------------------------------------------------------------------------------
 % Section and chapters headings
